@@ -1,7 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:karam/features/intro_screen/presentation/intro_screen_holder.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:karam/core/localization/localization_provider.dart';
+import 'package:karam/core/shared/injection.dart';
+import 'package:karam/features/intro_screen/presentation/on_boarding_page.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() {
   LicenseRegistry.addLicense(() async* {
@@ -9,19 +13,23 @@ void main() {
         await rootBundle.loadString('assets/fonts/SILOpenFontLicense.txt');
     yield LicenseEntryWithLineBreaks(['SILOpenFontLicense'], license);
   });
-  runApp(const App());
+  runApp(const ProviderScope(child: App()));
 }
 
-class App extends StatelessWidget {
+class App extends ConsumerWidget {
   const App({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final currentLang = ref.watch(currentLangProvider);
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle.dark.copyWith(statusBarColor: Colors.transparent),
     );
 
     return MaterialApp(
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+      locale: currentLang,
       title: 'Introduction screen',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
