@@ -1,10 +1,10 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:karam/core/localization/localization_provider.dart';
+import 'package:karam/core/router/router.dart';
 import 'package:karam/core/shared/injection.dart';
-import 'package:karam/features/intro_screen/presentation/on_boarding_page.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() {
@@ -16,22 +16,45 @@ void main() {
   runApp(const ProviderScope(child: App()));
 }
 
-class App extends ConsumerWidget {
+class App extends ConsumerStatefulWidget {
   const App({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<App> createState() => _AppState();
+}
+
+class _AppState extends ConsumerState<App> {
+  @override
+  void initState() {
+    // ref
+    //     .read(firebaseAuthInstanceProvider)
+    //     .authStateChanges()
+    //     .listen((user) async {
+    //   if (user == null) {
+    //     await _appRouter.pushAndPopUntil(const OnboardingRoute(),
+    //         predicate: ((route) => false));
+    //   } else {
+    //     await _appRouter.pushAndPopUntil(const AuthVerificationRoute(),
+    //         predicate: ((route) => false));
+    //   }
+    // });
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final currentLang = ref.watch(currentLangProvider);
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle.dark.copyWith(statusBarColor: Colors.transparent),
     );
 
-    return MaterialApp(
+    return MaterialApp.router(
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       locale: currentLang,
       title: 'Introduction screen',
       debugShowCheckedModeBanner: false,
+      routerConfig: appRouter,
       theme: ThemeData(
           primarySwatch: Colors.blue,
           useMaterial3: true,
@@ -44,7 +67,6 @@ class App extends ConsumerWidget {
               minimumSize: const Size(300, 55),
             ),
           )),
-      home: const OnBoardingPage(),
     );
   }
 }

@@ -7,6 +7,8 @@ import 'package:karam/core/shared/widgets/gradient_button.dart';
 class OnBoardingPage extends StatefulWidget {
   const OnBoardingPage({super.key});
 
+  static String get path => "/onBoarding";
+
   @override
   OnBoardingPageState createState() => OnBoardingPageState();
 }
