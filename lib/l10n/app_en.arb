@@ -1,4 +1,8 @@
 {
   "skip":"skip",
-  "next":"next"
+  "next":"next",
+  "login":"login",
+  "login_with_phone": "Sign in with phone number",
+  "register_on_karam": "Sign up on Karam",
+  "or": "or"
 }

@@ -35,4 +35,9 @@ class AppSpacing {
     width: 35,
     height: 35,
   );
+
+  static Widget customGap(double gap) => SizedBox(
+        width: gap,
+        height: gap,
+      );
 }

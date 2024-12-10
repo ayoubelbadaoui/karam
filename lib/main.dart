@@ -6,6 +6,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:karam/core/router/router.dart';
 import 'package:karam/core/shared/injection.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:karam/core/theme/theme.dart';
+import 'package:karam/features/intro_screen/presentation/on_boarding_screen.dart';
 
 void main() {
   LicenseRegistry.addLicense(() async* {
@@ -26,6 +28,12 @@ class App extends ConsumerStatefulWidget {
 class _AppState extends ConsumerState<App> {
   @override
   void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      // ignore: use_build_context_synchronously
+      Future.delayed(const Duration(seconds: 0)).then((_) {
+        appRouter.go(OnBoardingScreen.path);
+      });
+    });
     // ref
     //     .read(firebaseAuthInstanceProvider)
     //     .authStateChanges()
@@ -55,18 +63,7 @@ class _AppState extends ConsumerState<App> {
       title: 'Introduction screen',
       debugShowCheckedModeBanner: false,
       routerConfig: appRouter,
-      theme: ThemeData(
-          primarySwatch: Colors.blue,
-          useMaterial3: true,
-          fontFamily: "SourceSansPro",
-          elevatedButtonTheme: ElevatedButtonThemeData(
-            style: ElevatedButton.styleFrom(
-              shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.zero, // Global border radius
-              ),
-              minimumSize: const Size(300, 55),
-            ),
-          )),
+      theme: appTheme,
     );
   }
 }

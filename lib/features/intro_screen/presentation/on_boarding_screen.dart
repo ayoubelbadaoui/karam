@@ -2,24 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:karam/core/extensions/internalization.dart';
+import 'package:karam/core/router/router.dart';
 import 'package:karam/core/shared/widgets/gradient_button.dart';
 
-class OnBoardingPage extends StatefulWidget {
-  const OnBoardingPage({super.key});
+class OnBoardingScreen extends StatefulWidget {
+  const OnBoardingScreen({super.key});
 
   static String get path => "/onBoarding";
 
   @override
-  OnBoardingPageState createState() => OnBoardingPageState();
+  OnBoardingScreenState createState() => OnBoardingScreenState();
 }
 
-class OnBoardingPageState extends State<OnBoardingPage> {
+class OnBoardingScreenState extends State<OnBoardingScreen> {
   final introKey = GlobalKey<IntroductionScreenState>();
 
   void _onIntroEnd(context) {
-    Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (_) => const HomePage()),
-    );
+    appRouter.go("/login");
   }
 
   Widget _buildImage(String assetName, [double width = 300]) {
@@ -57,16 +56,14 @@ class OnBoardingPageState extends State<OnBoardingPage> {
                   ),
                 ),
               ),
-              GradientButton(
+              PrimaryGradientButton(
                 onPressed: () => _onIntroEnd(context),
                 child: Center(
                   child: Text(
                     context.translate().next.firstToUpperCase(),
-                    style: const TextStyle(
-                      fontSize: 18.0,
-                      // fontWeight: FontWeight.bold,
-                      color: Color(0xffFFFFFF),
-                    ),
+                    style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                          color: Theme.of(context).secondaryHeaderColor,
+                        ),
                   ),
                 ),
               ),
@@ -78,15 +75,12 @@ class OnBoardingPageState extends State<OnBoardingPage> {
         PageViewModel(
           image: _buildImage("intro_1"),
           title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
-          decoration: const PageDecoration(
-            titleTextStyle: TextStyle(
-              color: Color(0XFF0C63AA),
-              fontSize: 26,
-              fontWeight: FontWeight.w600,
-            ),
-            bodyTextStyle: TextStyle(
-              fontSize: 16,
-            ),
+          decoration: PageDecoration(
+            titleTextStyle: Theme.of(context).textTheme.displayMedium!.copyWith(
+                  color: Theme.of(context).primaryColor,
+                  fontSize: 26,
+                ),
+            bodyTextStyle: Theme.of(context).textTheme.displaySmall!,
           ),
           body:
               "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor.",
@@ -94,15 +88,12 @@ class OnBoardingPageState extends State<OnBoardingPage> {
         PageViewModel(
           image: _buildImage("intro_2"),
           title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
-          decoration: const PageDecoration(
-            titleTextStyle: TextStyle(
-              color: Color(0XFF0C63AA),
-              fontSize: 26,
-              fontWeight: FontWeight.w600,
-            ),
-            bodyTextStyle: TextStyle(
-              fontSize: 16,
-            ),
+          decoration: PageDecoration(
+            titleTextStyle: Theme.of(context).textTheme.displayMedium!.copyWith(
+                  color: Theme.of(context).primaryColor,
+                  fontSize: 26,
+                ),
+            bodyTextStyle: Theme.of(context).textTheme.displaySmall!,
           ),
           body:
               "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor.",
@@ -110,21 +101,17 @@ class OnBoardingPageState extends State<OnBoardingPage> {
         PageViewModel(
           image: _buildImage("intro_3"),
           title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
-          decoration: const PageDecoration(
-            titleTextStyle: TextStyle(
-              color: Color(0XFF0C63AA),
-              fontSize: 26,
-              fontWeight: FontWeight.w600,
-            ),
-            bodyTextStyle: TextStyle(
-              fontSize: 16,
-            ),
+          decoration: PageDecoration(
+            titleTextStyle: Theme.of(context).textTheme.displayMedium!.copyWith(
+                  color: Theme.of(context).primaryColor,
+                  fontSize: 26,
+                ),
+            bodyTextStyle: Theme.of(context).textTheme.displaySmall!,
           ),
           body:
               "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor.",
         ),
       ],
-      onSkip: () => _onIntroEnd(context),
       skipOrBackFlex: 0,
       showNextButton: false,
       nextFlex: 0,
@@ -132,10 +119,10 @@ class OnBoardingPageState extends State<OnBoardingPage> {
       showDoneButton: false,
       curve: Curves.fastLinearToSlowEaseIn,
       controlsMargin: const EdgeInsets.all(30),
-      dotsDecorator: const DotsDecorator(
-        size: Size(7.0, 7.0),
-        color: Color(0xFFBDBDBD),
-        activeColor: Color(0xff0C63AA),
+      dotsDecorator: DotsDecorator(
+        size: const Size(7.0, 7.0),
+        color: Theme.of(context).unselectedWidgetColor,
+        activeColor: Theme.of(context).primaryColor,
       ),
     );
   }
@@ -146,7 +133,7 @@ class HomePage extends StatelessWidget {
 
   void _onBackToIntro(context) {
     Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (_) => const OnBoardingPage()),
+      MaterialPageRoute(builder: (_) => const OnBoardingScreen()),
     );
   }
 

@@ -1,4 +1,8 @@
 {
   "skip":"passer",
-  "next":"suivant"
+  "next":"suivant",
+  "login":"Se connecter",
+  "login_with_phone": "Se connecter avec Nº de téléphone",
+  "register_on_karam": "S’inscrire sur Karam",
+  "or": "ou"
 }
