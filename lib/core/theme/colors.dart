@@ -21,6 +21,10 @@ class AppColors {
   static const Color secondary500 = Color(0xFFBDBDBD); // Neutral light gray
   static const Color secondary600 = Color(0xFF9E9E9E); // Darker gray
   static const Color secondary700 = Color(0xFF757575); // Even darker gray
+  static const Color hint = Color(0XFF858C94); // Even darker gray
+
+  static const Color secondaryHeaderColor =
+      Color(0xFF09101D); // Even darker gray
 
   static const Color primaryContainer = Color(0XFFFFFFFF); // Lighter Purple
   static const Color secondaryContainer = Color(0xFF0C63AA); // Darker Teal

@@ -5,6 +5,8 @@ import 'package:karam/core/theme/typography.dart';
 final ThemeData appTheme = ThemeData(
   primaryColor: AppColors.primary100,
   unselectedWidgetColor: AppColors.secondary500,
+  hintColor: AppColors.hint,
+  secondaryHeaderColor: AppColors.secondaryHeaderColor,
   colorScheme: const ColorScheme(
     brightness: Brightness.light,
     primary: AppColors.primary100,
@@ -18,9 +20,11 @@ final ThemeData appTheme = ThemeData(
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
+      elevation: 0.0,
       shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.zero, // Global border radius
-      ),
+          borderRadius:
+              BorderRadius.all(Radius.circular(4)), // Global border radius
+          side: BorderSide(width: 1, color: Color(0XFFEBEEF2))),
       minimumSize: const Size(300, 55),
       textStyle: AppTypography.labelLarge,
     ),
@@ -33,7 +37,7 @@ final ThemeData appTheme = ThemeData(
     headlineLarge: AppTypography.headlineLarge,
     headlineMedium: AppTypography.headlineMedium,
     headlineSmall: AppTypography.headlineSmall,
-    titleLarge: AppTypography.headlineLarge,
+    titleLarge: AppTypography.titleLarge,
     titleMedium: AppTypography.titleMedium,
     titleSmall: AppTypography.titleSmall,
     bodyLarge: AppTypography.bodyLarge,

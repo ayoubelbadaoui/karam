@@ -22,8 +22,8 @@ class AppSpacing {
   );
 
   static Widget extraMediumGap = const SizedBox(
-    width: 21,
-    height: 21,
+    width: 20,
+    height: 20,
   );
 
   static Widget bigGap = const SizedBox(

@@ -30,7 +30,7 @@ class PrimaryGradientButton extends StatelessWidget {
             end: Alignment.bottomRight,
           ),
         ),
-        child: child,
+        child: Center(child: child),
       ),
     );
   }

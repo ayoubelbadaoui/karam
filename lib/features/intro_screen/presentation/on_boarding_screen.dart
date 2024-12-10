@@ -43,17 +43,14 @@ class OnBoardingScreenState extends State<OnBoardingScreen> {
             children: [
               ElevatedButton(
                 style: ButtonStyle(
-                    minimumSize: WidgetStateProperty.all(const Size(380, 55)),
-                    backgroundColor:
-                        WidgetStateProperty.all(Colors.transparent),
-                    elevation: const WidgetStatePropertyAll(0.0)),
+                  minimumSize: WidgetStateProperty.all(const Size(380, 55)),
+                  backgroundColor: WidgetStateProperty.all(Colors.transparent),
+                  elevation: const WidgetStatePropertyAll(0.0),
+                  side: WidgetStateProperty.all(BorderSide.none),
+                ),
                 onPressed: () => _onIntroEnd(context),
                 child: Text(
                   context.translate().skip.firstToUpperCase(),
-                  style: const TextStyle(
-                    fontSize: 18.0,
-                    color: Color(0xff4086f4),
-                  ),
                 ),
               ),
               PrimaryGradientButton(
@@ -62,7 +59,7 @@ class OnBoardingScreenState extends State<OnBoardingScreen> {
                   child: Text(
                     context.translate().next.firstToUpperCase(),
                     style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                          color: Theme.of(context).secondaryHeaderColor,
+                          color: Theme.of(context).colorScheme.secondary,
                         ),
                   ),
                 ),

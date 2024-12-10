@@ -16,7 +16,7 @@ class AppTypography {
 
   static const TextStyle displaySmall = TextStyle(
     fontSize: 16, // Reasonable size for smaller display text
-    fontWeight: FontWeight.normal, // Medium
+    fontWeight: FontWeight.w400, // Medium
     fontFamily: 'Source Sans Pro',
   );
 
@@ -79,8 +79,8 @@ class AppTypography {
 
   // Label Styles
   static const TextStyle labelLarge = TextStyle(
-    fontSize: 18, // Default size for buttons and labels
-    fontWeight: FontWeight.w500, // Medium
+    fontSize: 16, // Default size for buttons and labels
+    fontWeight: FontWeight.w600, // Medium
     fontFamily: 'Source Sans Pro',
   );
 
@@ -92,7 +92,7 @@ class AppTypography {
 
   static const TextStyle labelSmall = TextStyle(
     fontSize: 11, // Smallest labels
-    fontWeight: FontWeight.w500, // Medium
+    fontWeight: FontWeight.w400, // Medium
     fontFamily: 'Source Sans Pro',
   );
 }

@@ -3,6 +3,12 @@
   "next":"التالي",
   "login":"تسجيل الدخول",
   "login_with_phone": "التسجيل باستخدام رقم الهاتف",
-  "register_on_karam": "التسجيل في كرم",
-  "or": "أو"
+  "or": "أو",
+  "facebook": "فيسبوك",
+  "google": "جوجل",
+  "apple": "آبل",
+  "connect_with_phone_number": "تسجيل الدخول باستخدام رقم الهاتف",
+  "register_on_karam": "التسجيل في كرم"
+ 
+
 }
