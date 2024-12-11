@@ -1,43 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:size_setter/size_setter.dart';
 
 class AppSpacing {
-  static Widget extrasmallGap = const SizedBox(
-    width: 3.5,
-    height: 3.5,
+  static Widget extraSmallGap = SizedBox(
+    width: 3.5.w,
+    height: 3.5.h,
   );
 
-  static Widget smallGap = const SizedBox(
-    width: 7,
-    height: 7,
+  static Widget smallGap = SizedBox(
+    width: 7.w,
+    height: 7.h,
   );
 
-  static Widget semiMediumGap = const SizedBox(
-    width: 10.5,
-    height: 10.5,
+  static Widget semiMediumGap = SizedBox(
+    width: 10.5.w,
+    height: 10.5.h,
   );
 
-  static Widget mediumGap = const SizedBox(
-    width: 14,
-    height: 14,
+  static Widget mediumGap = SizedBox(
+    width: 16.w,
+    height: 16.h,
   );
 
-  static Widget extraMediumGap = const SizedBox(
-    width: 20,
-    height: 20,
+  static Widget extraMediumGap = SizedBox(
+    width: 20.w,
+    height: 20.h,
   );
 
-  static Widget bigGap = const SizedBox(
-    width: 28,
-    height: 28,
+  static Widget bigGap = SizedBox(
+    width: 28.w,
+    height: 28.h,
   );
 
-  static Widget extraBigGap = const SizedBox(
-    width: 35,
-    height: 35,
+  static Widget extraBigGap = SizedBox(
+    width: 35.w,
+    height: 35.h,
   );
 
   static Widget customGap(double gap) => SizedBox(
-        width: gap,
-        height: gap,
+        width: gap.w,
+        height: gap.h,
       );
 }

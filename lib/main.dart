@@ -8,6 +8,7 @@ import 'package:karam/core/shared/injection.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:karam/core/theme/theme.dart';
 import 'package:karam/features/intro_screen/presentation/on_boarding_screen.dart';
+import 'package:size_setter/size_setter.dart';
 
 void main() {
   LicenseRegistry.addLicense(() async* {
@@ -50,20 +51,30 @@ class _AppState extends ConsumerState<App> {
   }
 
   @override
+  void didChangeDependencies() {
+    SizeSetterUtils.setSourceDeviceSize(
+        context: context, sourceWidth: 428, sourceHeight: 926);
+
+    super.didChangeDependencies();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final currentLang = ref.watch(currentLangProvider);
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle.dark.copyWith(statusBarColor: Colors.transparent),
     );
 
-    return MaterialApp.router(
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
-      supportedLocales: AppLocalizations.supportedLocales,
-      locale: currentLang,
-      title: 'Introduction screen',
-      debugShowCheckedModeBanner: false,
-      routerConfig: appRouter,
-      theme: appTheme,
+    return SizeSetter(
+      child: MaterialApp.router(
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
+        locale: currentLang,
+        title: 'Introduction screen',
+        debugShowCheckedModeBanner: false,
+        routerConfig: appRouter,
+        theme: appTheme,
+      ),
     );
   }
 }

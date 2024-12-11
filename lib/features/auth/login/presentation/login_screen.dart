@@ -7,6 +7,7 @@ import 'package:karam/core/shared/UI/spacings.dart';
 import 'package:karam/core/shared/widgets/body_warpper.dart';
 import 'package:karam/core/shared/widgets/gradient_button.dart';
 import 'package:karam/core/shared/widgets/logo_widget.dart';
+import 'package:size_setter/size_setter.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});
@@ -85,12 +86,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 PrimaryGradientButton(
                   onPressed: () {},
                   child: Text(
-                    context
-                        .translate()
-                        .connect_with_phone_number
-                        .firstToUpperCase(),
+                    context.translate().connect_with_email.firstToUpperCase(),
                     style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                        fontSize: 18,
+                        fontSize: 18.px,
                         color: Theme.of(context).colorScheme.secondary),
                   ),
                 ),
@@ -105,7 +103,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                             fontWeight: FontWeight.w400,
                           ),
                     ),
-                    AppSpacing.extrasmallGap,
+                    AppSpacing.extraSmallGap,
                     Text(
                       context.translate().register_on_karam.firstToUpperCase(),
                       style: Theme.of(context).textTheme.labelLarge?.copyWith(

@@ -30,7 +30,7 @@ final ThemeData appTheme = ThemeData(
     ),
   ),
   // Use typography directly for better customization and consistency
-  textTheme: const TextTheme(
+  textTheme: TextTheme(
     displayLarge: AppTypography.displayLarge,
     displayMedium: AppTypography.displayMedium,
     displaySmall: AppTypography.displaySmall,

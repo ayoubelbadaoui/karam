@@ -3,7 +3,9 @@ import 'package:flutter_svg/svg.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:karam/core/extensions/internalization.dart';
 import 'package:karam/core/router/router.dart';
+import 'package:karam/core/shared/UI/spacings.dart';
 import 'package:karam/core/shared/widgets/gradient_button.dart';
+import 'package:size_setter/size_setter.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({super.key});
@@ -75,7 +77,7 @@ class OnBoardingScreenState extends State<OnBoardingScreen> {
           decoration: PageDecoration(
             titleTextStyle: Theme.of(context).textTheme.displayMedium!.copyWith(
                   color: Theme.of(context).primaryColor,
-                  fontSize: 26,
+                  fontSize: 26.px,
                 ),
             bodyTextStyle: Theme.of(context).textTheme.displaySmall!,
           ),
@@ -88,7 +90,7 @@ class OnBoardingScreenState extends State<OnBoardingScreen> {
           decoration: PageDecoration(
             titleTextStyle: Theme.of(context).textTheme.displayMedium!.copyWith(
                   color: Theme.of(context).primaryColor,
-                  fontSize: 26,
+                  fontSize: 26.px,
                 ),
             bodyTextStyle: Theme.of(context).textTheme.displaySmall!,
           ),
@@ -101,7 +103,7 @@ class OnBoardingScreenState extends State<OnBoardingScreen> {
           decoration: PageDecoration(
             titleTextStyle: Theme.of(context).textTheme.displayMedium!.copyWith(
                   color: Theme.of(context).primaryColor,
-                  fontSize: 26,
+                  fontSize: 26.px,
                 ),
             bodyTextStyle: Theme.of(context).textTheme.displaySmall!,
           ),
@@ -143,7 +145,7 @@ class HomePage extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             const Text("This is the screen after Introduction"),
-            const SizedBox(height: 16.0),
+            AppSpacing.mediumGap,
             ElevatedButton(
               onPressed: () => _onBackToIntro(context),
               child: const Text('Back to Introduction'),

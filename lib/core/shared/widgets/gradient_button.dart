@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:karam/core/theme/typography.dart';
+import 'package:size_setter/size_setter.dart';
 
 class PrimaryGradientButton extends StatelessWidget {
   final VoidCallback onPressed;
@@ -12,8 +14,8 @@ class PrimaryGradientButton extends StatelessWidget {
     return GestureDetector(
       onTap: onPressed,
       child: Container(
-        width: 380,
-        height: 55,
+        width: 380.w,
+        height: 55.h,
         decoration: const BoxDecoration(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(4),
