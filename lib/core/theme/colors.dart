@@ -33,7 +33,12 @@ class AppColors {
   static const Color onError = Color(0XFFDA1414);
   static const Color error = Color(0XFFFEEFEF); // Red for errors
   static const Color onPrimary = Color(0xFFFFFFFF); // White text/icons
-  static const Color onSecondary = Color(0xFF000000); // Black text/icons
+  static const Color onSecondary = Color(0xFF09101D); // Black text/icons
   static const Color onSurface = Color(0XFF2C3A4B); // Black text/icons
   static const Color onBackground = Color(0xFF000000); // Black text/icons
+
+  static const Color inputHintColor = Color(0XFFDADEE3);
+
+  static const Color enabledBorderColor = Color(0xffEBEEF2);
+  static const Color focusedBorder = Color(0XFF4086F4);
 }

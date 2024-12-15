@@ -3,8 +3,9 @@ import 'package:flutter_svg/svg.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:karam/core/extensions/internalization.dart';
 import 'package:karam/core/router/router.dart';
-import 'package:karam/core/shared/UI/spacings.dart';
+import 'package:karam/core/shared/UI/gaps.dart';
 import 'package:karam/core/shared/widgets/gradient_button.dart';
+import 'package:karam/features/auth/core/presentation/auth_screen.dart';
 import 'package:size_setter/size_setter.dart';
 
 class OnBoardingScreen extends StatefulWidget {
@@ -20,7 +21,7 @@ class OnBoardingScreenState extends State<OnBoardingScreen> {
   final introKey = GlobalKey<IntroductionScreenState>();
 
   void _onIntroEnd(context) {
-    appRouter.go("/login");
+    appRouter.go(AuthScreen.path);
   }
 
   Widget _buildImage(String assetName, [double width = 300]) {
@@ -122,36 +123,6 @@ class OnBoardingScreenState extends State<OnBoardingScreen> {
         size: const Size(7.0, 7.0),
         color: Theme.of(context).unselectedWidgetColor,
         activeColor: Theme.of(context).primaryColor,
-      ),
-    );
-  }
-}
-
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
-
-  void _onBackToIntro(context) {
-    Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (_) => const OnBoardingScreen()),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Home')),
-      body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const Text("This is the screen after Introduction"),
-            AppSpacing.mediumGap,
-            ElevatedButton(
-              onPressed: () => _onBackToIntro(context),
-              child: const Text('Back to Introduction'),
-            ),
-          ],
-        ),
       ),
     );
   }

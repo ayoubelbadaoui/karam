@@ -18,6 +18,56 @@ final ThemeData appTheme = ThemeData(
     surface: AppColors.surface,
     onSurface: AppColors.onSurface,
   ),
+  inputDecorationTheme: InputDecorationTheme(
+      isDense: true,
+      floatingLabelBehavior: FloatingLabelBehavior.never,
+      alignLabelWithHint: true,
+      labelStyle: AppTypography.displaySmall.copyWith(
+        fontWeight: FontWeight.w600,
+        color: AppColors.inputHintColor,
+      ),
+      outlineBorder: const BorderSide(
+        color: AppColors.focusedBorder, // Color for the enabled border
+        width: 1,
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(100),
+        borderSide: const BorderSide(
+          color: AppColors.focusedBorder, // Color for the enabled border
+          width: 1,
+        ),
+      ),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(100),
+        borderSide: const BorderSide(
+          color: AppColors.focusedBorder, // Color for the enabled border
+          width: 1,
+        ),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(100),
+          borderSide: const BorderSide(
+            color: AppColors.onError, // Color for the enabled border
+            width: 1,
+          )),
+      errorStyle: const TextStyle(
+        color: AppColors.onError,
+        // backgroundColor: AppColors.error,
+        // padding: EdgeInsets.symmetric(horizontal: 8.0),
+      ),
+      errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(100),
+          borderSide: const BorderSide(
+            color: AppColors.onError, // Color for the enabled border
+            width: 1,
+          )),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(100),
+        borderSide: const BorderSide(
+          color: AppColors.focusedBorder, // Color for the enabled border
+          width: 1,
+        ),
+      )),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       elevation: 0.0,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:karam/core/shared/UI/spacings.dart';
+import 'package:karam/core/shared/UI/gaps.dart';
 import 'package:karam/core/shared/widgets/custom_loading_widget.dart';
 
 class InitialLoadingScreen extends StatelessWidget {

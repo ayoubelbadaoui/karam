@@ -8,7 +8,11 @@
   "google": "جوجل",
   "apple": "آبل",
   "connect_with_email": "الاتصال بالبريد الإلكتروني",
-  "register_on_karam": "التسجيل في كرم"
- 
-
+  "register_on_karam": "التسجيل في كرم",
+  "email":"البريد الإلكتروني",
+  "username": "اسم المستخدم",
+  "valid_username": "يرجى إدخال اسم مستخدم صالح",
+  "password": "كلمة المرور",
+  "enter_password": "يرجى إدخال كلمة المرور الخاصة بك",
+  "or_continue": "أو المتابعة ب"
 }

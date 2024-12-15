@@ -8,6 +8,11 @@
   "google": "Google",
   "apple": "Apple",
   "connect_with_email": "Se connecter avec email",
-  "register_on_karam": "S’inscrire sur Karam"
-
+  "register_on_karam": "S’inscrire sur Karam",
+  "email": "email",
+  "username": "Nom d'utilisateur",
+  "valid_username": "Veuillez entrer un nom d'utilisateur valide",
+  "password": "Mot de passe",
+  "enter_password": "Veuillez entrer votre mot de passe",
+  "or_continue_with": "ou continuer avec"
 }

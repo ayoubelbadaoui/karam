@@ -1,22 +1,28 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:karam/core/constants/assets_svg.dart';
 import 'package:karam/core/extensions/internalization.dart';
-import 'package:karam/core/shared/UI/spacings.dart';
+import 'package:karam/core/router/router.dart';
+import 'package:karam/core/shared/UI/gaps.dart';
 import 'package:karam/core/shared/widgets/body_warpper.dart';
 import 'package:karam/core/shared/widgets/gradient_button.dart';
 import 'package:karam/core/shared/widgets/logo_widget.dart';
+import 'package:karam/features/auth/login_email/presentation/login_screen.dart';
 import 'package:size_setter/size_setter.dart';
 
-class LoginScreen extends ConsumerStatefulWidget {
-  const LoginScreen({super.key});
+class AuthScreen extends ConsumerStatefulWidget {
+  const AuthScreen({super.key});
+  static String get path => "/auth_screen";
 
   @override
-  ConsumerState<LoginScreen> createState() => _LoginScreenState();
+  ConsumerState<AuthScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends ConsumerState<LoginScreen> {
+class _LoginScreenState extends ConsumerState<AuthScreen> {
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -84,7 +90,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 ),
                 AppSpacing.extraBigGap,
                 PrimaryGradientButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    context.push(LoginScreen.path);
+                  },
                   child: Text(
                     context.translate().connect_with_email.firstToUpperCase(),
                     style: Theme.of(context).textTheme.labelLarge?.copyWith(
@@ -92,7 +100,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                         color: Theme.of(context).colorScheme.secondary),
                   ),
                 ),
-                AppSpacing.semiMediumGap,
+                AppSpacing.extraBigGap,
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

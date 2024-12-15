@@ -38,6 +38,7 @@ dependencies:
   freezed_annotation: ^2.4.4
   build_runner: ^2.4.13
   size_setter: ^1.1.1
+  bounce_tapper: ^1.0.9
 
 dev_dependencies:
   flutter_test:
