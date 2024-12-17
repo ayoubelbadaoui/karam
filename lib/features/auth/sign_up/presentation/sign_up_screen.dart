@@ -1,10 +1,11 @@
+import 'dart:developer';
+
 import 'package:bounce_tapper/bounce_tapper.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_regex/flutter_regex.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:karam/core/constants/assets_svg.dart';
 import 'package:karam/core/constants/spacing.dart';
 import 'package:karam/core/extensions/internalization.dart';
@@ -14,16 +15,16 @@ import 'package:karam/core/shared/widgets/body_warpper.dart';
 import 'package:karam/core/shared/widgets/gradient_button.dart';
 import 'package:karam/core/shared/widgets/logo_widget.dart';
 
-class LoginScreen extends ConsumerStatefulWidget {
-  const LoginScreen({super.key});
+class SignupScreen extends ConsumerStatefulWidget {
+  const SignupScreen({super.key});
 
-  static String get path => "/sign_in";
+  static String get path => "/signup";
 
   @override
-  ConsumerState<LoginScreen> createState() => _LoginScreenState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _SignupScreenState();
 }
 
-class _LoginScreenState extends ConsumerState<LoginScreen> {
+class _SignupScreenState extends ConsumerState<SignupScreen> {
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -40,12 +41,12 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  AppSpacing.bigGap,
+                  AppSpacing.mediumGap,
                   const LogoWidget(),
-                  AppSpacing.bigGap,
+                  AppSpacing.mediumGap,
                   Align(
                     child: Text(
-                      context.translate().login,
+                      context.translate().sign_up,
                       style: Theme.of(context)
                           .textTheme
                           .displayMedium
@@ -67,19 +68,58 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                       return null;
                     },
                   ),
-                  AppSpacing.customGap(24),
+                  AppSpacing.mediumGap,
+                  AppInput(
+                    title: context.translate().email,
+                    hint: context.translate().email,
+                    validator: (email) {
+                      if (email == null ||
+                          email.isEmpty ||
+                          !email.isEmail(supportTopLevelDomain: true)) {
+                        return context.translate().please_enter_valid_email;
+                      }
+                      return null;
+                    },
+                  ),
+                  AppSpacing.mediumGap,
+                  AppInput(
+                    title: context.translate().first_name,
+                    hint: context.translate().first_name,
+                    validator: (firstName) {
+                      if (firstName == null ||
+                          firstName.isEmpty ||
+                          !firstName.isSsidNames()) {
+                        return context.translate().valid_username;
+                      }
+                      return null;
+                    },
+                  ),
+                  AppSpacing.mediumGap,
+                  AppInput(
+                    title: context.translate().name,
+                    hint: context.translate().name,
+                    validator: (name) {
+                      if (name == null || name.isEmpty || !name.isSsidNames()) {
+                        return context.translate().valid_username;
+                      }
+                      return null;
+                    },
+                  ),
+                  AppSpacing.mediumGap,
                   AppInput(
                     obscureText: true,
                     title: context.translate().password,
                     hint: context.translate().password,
-                    toggleObscureText: true,
                     autofillHints: const [
                       AutofillHints.username,
                       AutofillHints.email
                     ],
+                    toggleObscureText: true,
                     validator: (pwd) {
                       if (pwd == null || pwd.isEmpty) {
                         return context.translate().enter_password;
+                      } else if (!pwd.isPasswordEasy()) {
+                        return context.translate().weak_password_error;
                       }
                       return null;
                     },
@@ -98,7 +138,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     },
                     child: Center(
                       child: Text(
-                        context.translate().login.firstToUpperCase(),
+                        context.translate().sign_up.firstToUpperCase(),
                         style: Theme.of(context).textTheme.labelLarge?.copyWith(
                               color: Theme.of(context).colorScheme.secondary,
                             ),
@@ -135,8 +175,11 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     ],
                   ),
                   AppSpacing.customGap(70),
-                  BounceTapper(
-                    onTap: () => context.pop(),
+                  GestureDetector(
+                    onTap: () {
+                      context.pop();
+                      log("please sign me out");
+                    },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -161,7 +204,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                         ),
                       ],
                     ),
-                  )
+                  ),
+                  AppSpacing.customGap(70),
                 ],
               ),
             ),

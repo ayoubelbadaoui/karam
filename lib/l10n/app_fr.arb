@@ -14,5 +14,13 @@
   "valid_username": "Veuillez entrer un nom d'utilisateur valide",
   "password": "Mot de passe",
   "enter_password": "Veuillez entrer votre mot de passe",
-  "or_continue_with": "ou continuer avec"
+  "or_continue_with": "ou continuer avec",
+  "sign_up": "S'inscrire",
+  "name": "Nom",
+  "first_name": "Prénom",
+  "please_enter_valid_email": "Veuillez entrer un email valide",
+  "please_enter_valid_name": "Veuillez entrer un nom valide",
+  "please_enter_valid_first_name": "Veuillez entrer un prénom valide",
+  "weak_password_error": "Mot de passe faible. Ajoutez lettres, chiffres et symboles."
+
 }

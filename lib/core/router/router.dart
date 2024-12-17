@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:karam/features/auth/core/presentation/auth_screen.dart';
 import 'package:karam/features/auth/login_email/presentation/login_screen.dart';
+import 'package:karam/features/auth/sign_up/presentation/sign_up_screen.dart';
 import 'package:karam/features/intro_screen/presentation/on_boarding_screen.dart';
 import 'package:karam/features/initial_screen/presentation/initial_screen.dart';
 
@@ -23,6 +23,10 @@ final appRouter = GoRouter(
     GoRoute(
       path: LoginScreen.path,
       builder: (context, state) => const LoginScreen(),
+    ),
+    GoRoute(
+      path: SignupScreen.path,
+      builder: (context, state) => const SignupScreen(),
     ),
   ],
 );

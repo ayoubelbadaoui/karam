@@ -3,7 +3,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:karam/core/extensions/internalization.dart';
 import 'package:karam/core/router/router.dart';
-import 'package:karam/core/shared/UI/gaps.dart';
 import 'package:karam/core/shared/widgets/gradient_button.dart';
 import 'package:karam/features/auth/core/presentation/auth_screen.dart';
 import 'package:size_setter/size_setter.dart';

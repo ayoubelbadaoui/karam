@@ -14,5 +14,12 @@
   "valid_username": "يرجى إدخال اسم مستخدم صالح",
   "password": "كلمة المرور",
   "enter_password": "يرجى إدخال كلمة المرور الخاصة بك",
-  "or_continue": "أو المتابعة ب"
+  "or_continue": "أو المتابعة ب",
+  "sign_up": "إنشاء حساب",
+  "name": "الاسم",
+  "first_name": "الاسم الأول",
+  "please_enter_valid_email": "يرجى إدخال بريد إلكتروني صالح",
+  "please_enter_valid_name": "يرجى إدخال اسم صالح",
+  "please_enter_valid_first_name": "يرجى إدخال اسم أول صالح",
+  "weak_password_error": "كلمة المرور ضعيفة. أضف أحرفًا وأرقامًا ورموزًا."
 }

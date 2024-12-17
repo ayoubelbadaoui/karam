@@ -21,6 +21,7 @@ class BodyWrapper extends StatelessWidget {
   Widget build(BuildContext context) {
     return useSafeArea
         ? SafeArea(
+            bottom: false,
             child: Container(
               padding: padding ?? EdgeInsets.zero,
               width: double.maxFinite,

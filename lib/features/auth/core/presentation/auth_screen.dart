@@ -1,17 +1,16 @@
-import 'dart:developer';
-
+import 'package:bounce_tapper/bounce_tapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:karam/core/constants/assets_svg.dart';
 import 'package:karam/core/extensions/internalization.dart';
-import 'package:karam/core/router/router.dart';
 import 'package:karam/core/shared/UI/gaps.dart';
 import 'package:karam/core/shared/widgets/body_warpper.dart';
 import 'package:karam/core/shared/widgets/gradient_button.dart';
 import 'package:karam/core/shared/widgets/logo_widget.dart';
 import 'package:karam/features/auth/login_email/presentation/login_screen.dart';
+import 'package:karam/features/auth/sign_up/presentation/sign_up_screen.dart';
 import 'package:size_setter/size_setter.dart';
 
 class AuthScreen extends ConsumerStatefulWidget {
@@ -90,9 +89,7 @@ class _LoginScreenState extends ConsumerState<AuthScreen> {
                 ),
                 AppSpacing.extraBigGap,
                 PrimaryGradientButton(
-                  onPressed: () {
-                    context.push(LoginScreen.path);
-                  },
+                  onPressed: () => context.push(LoginScreen.path),
                   child: Text(
                     context.translate().connect_with_email.firstToUpperCase(),
                     style: Theme.of(context).textTheme.labelLarge?.copyWith(
@@ -101,24 +98,30 @@ class _LoginScreenState extends ConsumerState<AuthScreen> {
                   ),
                 ),
                 AppSpacing.extraBigGap,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      context.translate().or,
-                      style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                            color: Theme.of(context).hintColor,
-                            fontWeight: FontWeight.w400,
-                          ),
-                    ),
-                    AppSpacing.extraSmallGap,
-                    Text(
-                      context.translate().register_on_karam.firstToUpperCase(),
-                      style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                            color: Theme.of(context).primaryColor,
-                          ),
-                    ),
-                  ],
+                BounceTapper(
+                  onTap: () => context.push(SignupScreen.path),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        context.translate().or,
+                        style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                              color: Theme.of(context).hintColor,
+                              fontWeight: FontWeight.w400,
+                            ),
+                      ),
+                      AppSpacing.extraSmallGap,
+                      Text(
+                        context
+                            .translate()
+                            .register_on_karam
+                            .firstToUpperCase(),
+                        style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                              color: Theme.of(context).primaryColor,
+                            ),
+                      ),
+                    ],
+                  ),
                 )
               ],
             ),

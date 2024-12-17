@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:karam/core/theme/typography.dart';
 import 'package:size_setter/size_setter.dart';
 
 class PrimaryGradientButton extends StatelessWidget {
