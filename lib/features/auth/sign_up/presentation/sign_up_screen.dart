@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:bounce_tapper/bounce_tapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_regex/flutter_regex.dart';
@@ -127,10 +125,7 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                   AppSpacing.bigGap,
                   PrimaryGradientButton(
                     onPressed: () {
-                      // Validate returns true if the form is valid, or false otherwise.
                       if (_formKey.currentState!.validate()) {
-                        // If the form is valid, display a snackbar. In the real world,
-                        // you'd often call a server or save the information in a database.
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(content: Text('Processing Data')),
                         );
@@ -160,17 +155,17 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                       BounceTapper(
                         highlightBorderRadius:
                             const BorderRadius.all(Radius.circular(200)),
-                        child: SvgPicture.asset(SvgAssets.facebook),
+                        child: SvgPicture.asset(AppSvgAssets.facebook),
                       ),
                       BounceTapper(
                         highlightBorderRadius:
                             const BorderRadius.all(Radius.circular(200)),
-                        child: SvgPicture.asset(SvgAssets.google),
+                        child: SvgPicture.asset(AppSvgAssets.google),
                       ),
                       BounceTapper(
                         highlightBorderRadius:
                             const BorderRadius.all(Radius.circular(200)),
-                        child: SvgPicture.asset(SvgAssets.apple),
+                        child: SvgPicture.asset(AppSvgAssets.apple),
                       ),
                     ],
                   ),
@@ -178,7 +173,6 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                   GestureDetector(
                     onTap: () {
                       context.pop();
-                      log("please sign me out");
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,

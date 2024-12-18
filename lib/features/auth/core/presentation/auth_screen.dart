@@ -11,6 +11,8 @@ import 'package:karam/core/shared/widgets/gradient_button.dart';
 import 'package:karam/core/shared/widgets/logo_widget.dart';
 import 'package:karam/features/auth/login_email/presentation/login_screen.dart';
 import 'package:karam/features/auth/sign_up/presentation/sign_up_screen.dart';
+import 'package:karam/features/dashboard_screen/core/presentation/dashboard.dart';
+import 'package:karam/features/dashboard_screen/home/presentation/home_screen.dart';
 import 'package:size_setter/size_setter.dart';
 
 class AuthScreen extends ConsumerStatefulWidget {
@@ -48,7 +50,7 @@ class _LoginScreenState extends ConsumerState<AuthScreen> {
                 ),
                 AppSpacing.extraBigGap,
                 ElevatedButton.icon(
-                  icon: SvgPicture.asset(SvgAssets.facebook),
+                  icon: SvgPicture.asset(AppSvgAssets.facebook),
                   onPressed: () {},
                   label: Text(
                     context.translate().facebook.firstToUpperCase(),
@@ -59,7 +61,7 @@ class _LoginScreenState extends ConsumerState<AuthScreen> {
                 ),
                 AppSpacing.extraMediumGap,
                 ElevatedButton.icon(
-                  icon: SvgPicture.asset(SvgAssets.google),
+                  icon: SvgPicture.asset(AppSvgAssets.google),
                   onPressed: () {},
                   label: Text(
                     context.translate().google.firstToUpperCase(),
@@ -70,7 +72,7 @@ class _LoginScreenState extends ConsumerState<AuthScreen> {
                 ),
                 AppSpacing.extraMediumGap,
                 ElevatedButton.icon(
-                  icon: SvgPicture.asset(SvgAssets.apple),
+                  icon: SvgPicture.asset(AppSvgAssets.apple),
                   onPressed: () {},
                   label: Text(
                     context.translate().apple.firstToUpperCase(),
@@ -89,7 +91,8 @@ class _LoginScreenState extends ConsumerState<AuthScreen> {
                 ),
                 AppSpacing.extraBigGap,
                 PrimaryGradientButton(
-                  onPressed: () => context.push(LoginScreen.path),
+                  // onPressed: () => context.push(LoginScreen.path),
+                  onPressed: () => context.push(HomeScreen.path),
                   child: Text(
                     context.translate().connect_with_email.firstToUpperCase(),
                     style: Theme.of(context).textTheme.labelLarge?.copyWith(

@@ -52,6 +52,8 @@ flutter:
   uses-material-design: true
   generate: true
   assets:
+    - assets/svg/tab_icons/active/
+    - assets/svg/tab_icons/unActive/
     - assets/svg/
     - assets/lang/
     - assets/images/

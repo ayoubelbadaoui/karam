@@ -120,17 +120,17 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                       BounceTapper(
                         highlightBorderRadius:
                             const BorderRadius.all(Radius.circular(200)),
-                        child: SvgPicture.asset(SvgAssets.facebook),
+                        child: SvgPicture.asset(AppSvgAssets.facebook),
                       ),
                       BounceTapper(
                         highlightBorderRadius:
                             const BorderRadius.all(Radius.circular(200)),
-                        child: SvgPicture.asset(SvgAssets.google),
+                        child: SvgPicture.asset(AppSvgAssets.google),
                       ),
                       BounceTapper(
                         highlightBorderRadius:
                             const BorderRadius.all(Radius.circular(200)),
-                        child: SvgPicture.asset(SvgAssets.apple),
+                        child: SvgPicture.asset(AppSvgAssets.apple),
                       ),
                     ],
                   ),
