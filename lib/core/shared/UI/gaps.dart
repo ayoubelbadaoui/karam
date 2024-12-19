@@ -13,8 +13,8 @@ class AppSpacing {
   );
 
   static Widget semiMediumGap = SizedBox(
-    width: 10.5.w,
-    height: 10.5.h,
+    width: 11.w,
+    height: 11.h,
   );
 
   static Widget mediumGap = SizedBox(
