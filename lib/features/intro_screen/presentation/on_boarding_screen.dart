@@ -1,29 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:karam/core/extensions/internalization.dart';
-import 'package:karam/core/router/router.dart';
 import 'package:karam/core/shared/UI/gaps.dart';
+import 'package:karam/core/shared/injection.dart';
 import 'package:karam/core/shared/widgets/gradient_button.dart';
 import 'package:karam/features/auth/core/presentation/auth_screen.dart';
 import 'package:size_setter/size_setter.dart';
 
-class OnBoardingScreen extends StatefulWidget {
+class OnBoardingScreen extends ConsumerStatefulWidget {
   const OnBoardingScreen({super.key});
-
   static String get path => "/onBoarding";
 
   @override
-  OnBoardingScreenState createState() => OnBoardingScreenState();
+  ConsumerState<ConsumerStatefulWidget> createState() =>
+      _OnBoardingScreenState();
 }
 
-class OnBoardingScreenState extends State<OnBoardingScreen> {
+class _OnBoardingScreenState extends ConsumerState<OnBoardingScreen> {
   final introKey = GlobalKey<IntroductionScreenState>();
-
-  void _onIntroEnd(context) {
-    appRouter.go(AuthScreen.path);
-  }
-
   Widget _buildImage(String assetName, [double width = 300]) {
     return SvgPicture.asset(
       'assets/svg/$assetName.svg',
@@ -34,6 +30,7 @@ class OnBoardingScreenState extends State<OnBoardingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final appRouter = ref.watch(appRouterProvider);
     return IntroductionScreen(
       key: introKey,
       globalBackgroundColor: Colors.white,
@@ -51,13 +48,13 @@ class OnBoardingScreenState extends State<OnBoardingScreen> {
                   elevation: const WidgetStatePropertyAll(0.0),
                   side: WidgetStateProperty.all(BorderSide.none),
                 ),
-                onPressed: () => _onIntroEnd(context),
+                onPressed: () => appRouter.push(AuthScreen.path),
                 child: Text(
                   context.translate().skip.firstToUpperCase(),
                 ),
               ),
               PrimaryGradientButton(
-                onPressed: () => _onIntroEnd(context),
+                onPressed: () => appRouter.push(AuthScreen.path),
                 child: Center(
                   child: Text(
                     context.translate().next.firstToUpperCase(),

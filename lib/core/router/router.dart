@@ -35,10 +35,6 @@ final appRouter = GoRouter(
       path: SignupScreen.path,
       builder: (context, state) => const SignupScreen(),
     ),
-    // GoRoute(
-    //   path: HomeScreen.path,
-    //   builder: (context, state) => const HomeScreen(),
-    // ),
     ShellRoute(
         navigatorKey: _shellNavigatorKey,
         builder: (BuildContext context, GoRouterState state, Widget child) {

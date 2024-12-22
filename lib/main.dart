@@ -3,7 +3,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:karam/core/router/router.dart';
 import 'package:karam/core/shared/injection.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:karam/core/theme/theme.dart';
@@ -29,6 +28,7 @@ class App extends ConsumerStatefulWidget {
 class _AppState extends ConsumerState<App> {
   @override
   void initState() {
+    final appRouter = ref.read(appRouterProvider);
     WidgetsBinding.instance.addPostFrameCallback((_) {
       // ignore: use_build_context_synchronously
       Future.delayed(const Duration(seconds: 0)).then((_) {
@@ -60,6 +60,7 @@ class _AppState extends ConsumerState<App> {
 
   @override
   Widget build(BuildContext context) {
+    final appRouter = ref.watch(appRouterProvider);
     final currentLang = ref.watch(currentLangProvider);
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle.dark.copyWith(statusBarColor: Colors.transparent),

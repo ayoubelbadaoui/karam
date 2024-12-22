@@ -5,7 +5,7 @@ import 'package:karam/features/dashboard_screen/home/presentation/widgets/action
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
-  static String get path => "/home";
+  static const String path = "/home";
 
   @override
   Widget build(BuildContext context) {

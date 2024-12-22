@@ -1,19 +1,22 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:karam/features/dashboard_screen/home/presentation/home_screen.dart';
+import 'package:karam/core/shared/injection.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends ConsumerWidget {
   const ProfileScreen({super.key});
 
-  static String get path => "/profile";
+  static const String path = "/profile";
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       body: Center(
         child: ElevatedButton(
             onPressed: () {
-              context.push(HomeScreen.path);
+              ref
+                  .watch(bottomNavigationNotifierProvider)
+                  // Navigate to Home screen
+                  .updateBottomNavigation(0);
             },
             child: const Text("Make donation")),
       ),
