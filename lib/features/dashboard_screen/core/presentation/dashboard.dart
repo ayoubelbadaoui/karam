@@ -4,13 +4,10 @@ import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:karam/core/constants/assets_svg.dart';
 import 'package:karam/core/router/router.dart';
-import 'package:karam/core/shared/UI/gaps.dart';
-import 'package:karam/core/shared/widgets/logo_widget.dart';
 import 'package:karam/features/dashboard_screen/core/presentation/widgets/karam_app_bar.dart';
 import 'package:karam/features/dashboard_screen/donation/presentation/donations_screen.dart';
 import 'package:karam/features/dashboard_screen/home/presentation/home_screen.dart';
 import 'package:karam/features/dashboard_screen/profile/presentation/profile_screen.dart';
-import 'package:size_setter/size_setter.dart';
 
 class DashboardScreen extends ConsumerStatefulWidget {
   const DashboardScreen({super.key, required this.child});
@@ -28,21 +25,7 @@ class _HomeScreenState extends ConsumerState<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: KaramAppBar(),
-      // appBar: AppBar(
-      //   leading: Padding(
-      //     padding: EdgeInsets.only(left: 24.w),
-      //     child: const LogoWidget(),
-      //   ),
-      //   actions: [
-      //     const Icon(Icons.bookmark_add_rounded),
-      //     AppSpacing.mediumGap,
-      //     const Icon(Icons.notifications_active),
-      //     AppSpacing.mediumGap,
-      //     const Icon(Icons.search),
-      //     AppSpacing.customGap(24),
-      //   ],
-      // ),
+      appBar: const KaramAppBar(),
       bottomNavigationBar: BottomNavigationBar(
         showSelectedLabels: false,
         showUnselectedLabels: false,

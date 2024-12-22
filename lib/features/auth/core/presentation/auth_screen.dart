@@ -9,9 +9,7 @@ import 'package:karam/core/shared/UI/gaps.dart';
 import 'package:karam/core/shared/widgets/body_warpper.dart';
 import 'package:karam/core/shared/widgets/gradient_button.dart';
 import 'package:karam/core/shared/widgets/logo_widget.dart';
-import 'package:karam/features/auth/login_email/presentation/login_screen.dart';
 import 'package:karam/features/auth/sign_up/presentation/sign_up_screen.dart';
-import 'package:karam/features/dashboard_screen/core/presentation/dashboard.dart';
 import 'package:karam/features/dashboard_screen/home/presentation/home_screen.dart';
 import 'package:size_setter/size_setter.dart';
 

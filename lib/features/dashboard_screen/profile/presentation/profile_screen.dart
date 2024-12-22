@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:karam/features/dashboard_screen/home/presentation/home_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -7,9 +9,13 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Center(
-        child: Text("Profile screen"),
+        child: ElevatedButton(
+            onPressed: () {
+              context.push(HomeScreen.path);
+            },
+            child: const Text("Make donation")),
       ),
     );
   }

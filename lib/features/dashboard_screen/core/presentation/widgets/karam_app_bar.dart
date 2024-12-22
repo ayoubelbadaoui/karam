@@ -29,7 +29,7 @@ class KaramAppBar extends StatelessWidget implements PreferredSizeWidget {
             ),
             Row(
               children: [
-                // Add test function in case dark theme is added for testing Theme.of(context).brightness == Brightness.dark ? ...
+                // Add test function in case dark theme is added for testing Theme.of(context).brightness == Brightness.dark ?
                 SvgPicture.asset(
                   AppSvgAssets.search_icon_light,
                 ),
