@@ -21,6 +21,9 @@
   "please_enter_valid_email": "Please enter a valid email",
   "please_enter_valid_name": "Please enter a valid name",
   "please_enter_valid_first_name": "Please enter a valid first name",
-  "weak_password_error": "Weak password. Add letters, numbers, and symbols."
+  "weak_password_error": "Weak password. Add letters, numbers, and symbols.",
+  "urgent_cases": "Urgent cases",
+  "see_all": "See all"
+
 
 }

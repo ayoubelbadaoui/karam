@@ -6,6 +6,7 @@ final ThemeData appTheme = ThemeData(
   primaryColor: AppColors.primary100,
   unselectedWidgetColor: AppColors.secondary500,
   hintColor: AppColors.hint,
+  cardColor: AppColors.focusedBorder,
   secondaryHeaderColor: AppColors.secondaryHeaderColor,
   colorScheme: const ColorScheme(
     brightness: Brightness.light,
@@ -74,7 +75,7 @@ final ThemeData appTheme = ThemeData(
       shape: const RoundedRectangleBorder(
           borderRadius:
               BorderRadius.all(Radius.circular(4)), // Global border radius
-          side: BorderSide(width: 1, color: Color(0XFFEBEEF2))),
+          side: BorderSide(width: 1, color: AppColors.enabledBorderColor)),
       minimumSize: const Size(300, 55),
       textStyle: AppTypography.labelLarge,
     ),

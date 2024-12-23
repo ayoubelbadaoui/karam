@@ -21,5 +21,9 @@
   "please_enter_valid_email": "يرجى إدخال بريد إلكتروني صالح",
   "please_enter_valid_name": "يرجى إدخال اسم صالح",
   "please_enter_valid_first_name": "يرجى إدخال اسم أول صالح",
-  "weak_password_error": "كلمة المرور ضعيفة. أضف أحرفًا وأرقامًا ورموزًا."
+  "weak_password_error": "كلمة المرور ضعيفة. أضف أحرفًا وأرقامًا ورموزًا.",
+  "cas_urgent": "كلمة المرور ضعيفة. أضف أحرفًا وأرقامًا ورموزًا.",
+  "urgent_cases": "الحالات العاجلة",
+  "see_all": "عرض الكل"
+
 }

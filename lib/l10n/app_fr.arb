@@ -21,6 +21,10 @@
   "please_enter_valid_email": "Veuillez entrer un email valide",
   "please_enter_valid_name": "Veuillez entrer un nom valide",
   "please_enter_valid_first_name": "Veuillez entrer un prénom valide",
-  "weak_password_error": "Mot de passe faible. Ajoutez lettres, chiffres et symboles."
+  "weak_password_error": "Mot de passe faible. Ajoutez lettres, chiffres et symboles.",
+  "urgent_cases": "Cas urgents",
+  "see_all": "Voir tout"
+
+
 
 }
