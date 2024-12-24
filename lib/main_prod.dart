@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +12,9 @@ void main() async {
   await dotenv.load(fileName: 'assets/env/.env.prod');
 
   await EnvLoader.loadEnv('prod');
-  print('Loaded Environment: ${EnvLoader.env}');
+  if (kDebugMode) {
+    print('Loaded Environment: ${EnvLoader.env}');
+  }
   AppConfig.initialize(
     AppConfig(
       appName: "Karam (Prod)",
