@@ -5,13 +5,13 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:karam/core/infrastructure/interceptors.dart';
 import 'package:karam/features/auth/core/domain/user_credentials.dart';
 
-class DioProvider {
+class ApiCLient {
   final FlutterSecureStorage _secureStorage;
   final String _baseUrl;
   Dio _dio;
   String? _token;
 
-  DioProvider(
+  ApiCLient(
     this._secureStorage,
     this._baseUrl,
     this._dio,
