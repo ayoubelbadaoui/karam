@@ -5,10 +5,16 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "karam",
+      "name": "karam (Dev)",
       "request": "launch",
       "type": "dart",
-      "program": "lib/main.dart"
+      "program": "lib/main_dev.dart"
+    },
+    {
+      "name": "karam (Prod)",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main_prod.dart"
     },
     {
       "name": "karam (profile mode)",

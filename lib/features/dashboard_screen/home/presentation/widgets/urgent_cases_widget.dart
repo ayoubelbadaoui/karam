@@ -21,7 +21,7 @@ class _UrgentCasesWidgetState extends ConsumerState<UrgentCasesWidget> {
       height: 256.h,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
-        padding: EdgeInsets.only(left: 24.w),
+        padding: EdgeInsets.symmetric(horizontal: 24.w),
         itemBuilder: (BuildContext context, int index) {
           return CaseItemWidget(
             urgentCaseModel: urgentCasesNotifier.sampleUrgentCases[index],

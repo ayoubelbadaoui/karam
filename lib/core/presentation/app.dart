@@ -1,22 +1,11 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:karam/core/shared/injection.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:karam/core/theme/theme.dart';
 import 'package:karam/features/intro_screen/presentation/on_boarding_screen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:size_setter/size_setter.dart';
-
-void main() {
-  LicenseRegistry.addLicense(() async* {
-    final license =
-        await rootBundle.loadString('assets/fonts/SILOpenFontLicense.txt');
-    yield LicenseEntryWithLineBreaks(['SILOpenFontLicense'], license);
-  });
-  runApp(const ProviderScope(child: App()));
-}
 
 class App extends ConsumerStatefulWidget {
   const App({super.key});
