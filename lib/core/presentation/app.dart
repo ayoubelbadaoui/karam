@@ -1,3 +1,4 @@
+import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -7,14 +8,22 @@ import 'package:karam/features/intro_screen/presentation/on_boarding_screen.dart
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:size_setter/size_setter.dart';
 
-class App extends ConsumerStatefulWidget {
-  const App({super.key});
+final _initializationProvider = FutureProvider<Unit>((ref) async {
+  final apiClient = ref.read(apiClientProvider);
+  await apiClient.init();
+  // final authNotifier = ref.read(authProvider.notifier);
+  // await authNotifier.checkAndUpdateState();
+  return unit;
+});
+
+class AppWidget extends ConsumerStatefulWidget {
+  const AppWidget({super.key});
 
   @override
-  ConsumerState<App> createState() => _AppState();
+  ConsumerState<AppWidget> createState() => _AppState();
 }
 
-class _AppState extends ConsumerState<App> {
+class _AppState extends ConsumerState<AppWidget> {
   @override
   void initState() {
     final appRouter = ref.read(appRouterProvider);
@@ -24,6 +33,7 @@ class _AppState extends ConsumerState<App> {
         appRouter.go(OnBoardingScreen.path);
       });
     });
+
     // ref
     //     .read(firebaseAuthInstanceProvider)
     //     .authStateChanges()
@@ -51,6 +61,8 @@ class _AppState extends ConsumerState<App> {
   Widget build(BuildContext context) {
     final appRouter = ref.watch(appRouterProvider);
     final currentLang = ref.watch(currentLangProvider);
+    ref.listen(_initializationProvider, (previous, next) {});
+
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle.dark.copyWith(statusBarColor: Colors.transparent),
     );

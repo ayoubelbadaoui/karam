@@ -13,6 +13,8 @@ class AppInput extends StatefulWidget {
     this.autofillHints,
     this.allowSpacing = false,
     this.toggleObscureText = false,
+    this.controller,
+    this.isLoading = false,
   });
 
   final String? hint;
@@ -22,6 +24,8 @@ class AppInput extends StatefulWidget {
   final Iterable<String>? autofillHints;
   final bool allowSpacing;
   final bool toggleObscureText;
+  final TextEditingController? controller;
+  final bool isLoading;
 
   @override
   State<AppInput> createState() => _AppInputState();
@@ -41,7 +45,8 @@ class _AppInputState extends State<AppInput> {
             : const SizedBox(),
         widget.title != null ? AppSpacing.semiMediumGap : const SizedBox(),
         TextFormField(
-          onTap: () {},
+          controller: widget.controller,
+          readOnly: widget.isLoading,
           obscureText:
               widget.toggleObscureText ? isObscure : widget.obscureText,
           inputFormatters: [

@@ -6,14 +6,18 @@ part of 'user_credentials.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ApiResponseImpl _$$ApiResponseImplFromJson(Map<String, dynamic> json) =>
-    _$ApiResponseImpl(
+_$UserCredentialsImpl _$$UserCredentialsImplFromJson(
+        Map<String, dynamic> json) =>
+    _$UserCredentialsImpl(
       success: json['success'] as bool,
-      messages: json['messages'] as String?,
-      data: Data.fromJson(json['data'] as Map<String, dynamic>),
+      messages: json['messages'],
+      data: json['data'] == null
+          ? null
+          : Data.fromJson(json['data'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$ApiResponseImplToJson(_$ApiResponseImpl instance) =>
+Map<String, dynamic> _$$UserCredentialsImplToJson(
+        _$UserCredentialsImpl instance) =>
     <String, dynamic>{
       'success': instance.success,
       'messages': instance.messages,

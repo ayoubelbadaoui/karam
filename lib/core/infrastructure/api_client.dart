@@ -47,5 +47,5 @@ class ApiCLient {
   }
 
   Future<String?>? _getToken() async =>
-      getCredentials().then((value) => _token = value?.data.token);
+      getCredentials().then((value) => _token = value?.data?.token);
 }

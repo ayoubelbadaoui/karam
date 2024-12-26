@@ -15,14 +15,14 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 UserCredentials _$UserCredentialsFromJson(Map<String, dynamic> json) {
-  return _ApiResponse.fromJson(json);
+  return _UserCredentials.fromJson(json);
 }
 
 /// @nodoc
 mixin _$UserCredentials {
   bool get success => throw _privateConstructorUsedError;
-  String? get messages => throw _privateConstructorUsedError;
-  Data get data => throw _privateConstructorUsedError;
+  dynamic get messages => throw _privateConstructorUsedError;
+  Data? get data => throw _privateConstructorUsedError;
 
   /// Serializes this UserCredentials to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -40,9 +40,9 @@ abstract class $UserCredentialsCopyWith<$Res> {
           UserCredentials value, $Res Function(UserCredentials) then) =
       _$UserCredentialsCopyWithImpl<$Res, UserCredentials>;
   @useResult
-  $Res call({bool success, String? messages, Data data});
+  $Res call({bool success, dynamic messages, Data? data});
 
-  $DataCopyWith<$Res> get data;
+  $DataCopyWith<$Res>? get data;
 }
 
 /// @nodoc
@@ -62,7 +62,7 @@ class _$UserCredentialsCopyWithImpl<$Res, $Val extends UserCredentials>
   $Res call({
     Object? success = null,
     Object? messages = freezed,
-    Object? data = null,
+    Object? data = freezed,
   }) {
     return _then(_value.copyWith(
       success: null == success
@@ -72,11 +72,11 @@ class _$UserCredentialsCopyWithImpl<$Res, $Val extends UserCredentials>
       messages: freezed == messages
           ? _value.messages
           : messages // ignore: cast_nullable_to_non_nullable
-              as String?,
-      data: null == data
+              as dynamic,
+      data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as Data,
+              as Data?,
     ) as $Val);
   }
 
@@ -84,33 +84,37 @@ class _$UserCredentialsCopyWithImpl<$Res, $Val extends UserCredentials>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $DataCopyWith<$Res> get data {
-    return $DataCopyWith<$Res>(_value.data, (value) {
+  $DataCopyWith<$Res>? get data {
+    if (_value.data == null) {
+      return null;
+    }
+
+    return $DataCopyWith<$Res>(_value.data!, (value) {
       return _then(_value.copyWith(data: value) as $Val);
     });
   }
 }
 
 /// @nodoc
-abstract class _$$ApiResponseImplCopyWith<$Res>
+abstract class _$$UserCredentialsImplCopyWith<$Res>
     implements $UserCredentialsCopyWith<$Res> {
-  factory _$$ApiResponseImplCopyWith(
-          _$ApiResponseImpl value, $Res Function(_$ApiResponseImpl) then) =
-      __$$ApiResponseImplCopyWithImpl<$Res>;
+  factory _$$UserCredentialsImplCopyWith(_$UserCredentialsImpl value,
+          $Res Function(_$UserCredentialsImpl) then) =
+      __$$UserCredentialsImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool success, String? messages, Data data});
+  $Res call({bool success, dynamic messages, Data? data});
 
   @override
-  $DataCopyWith<$Res> get data;
+  $DataCopyWith<$Res>? get data;
 }
 
 /// @nodoc
-class __$$ApiResponseImplCopyWithImpl<$Res>
-    extends _$UserCredentialsCopyWithImpl<$Res, _$ApiResponseImpl>
-    implements _$$ApiResponseImplCopyWith<$Res> {
-  __$$ApiResponseImplCopyWithImpl(
-      _$ApiResponseImpl _value, $Res Function(_$ApiResponseImpl) _then)
+class __$$UserCredentialsImplCopyWithImpl<$Res>
+    extends _$UserCredentialsCopyWithImpl<$Res, _$UserCredentialsImpl>
+    implements _$$UserCredentialsImplCopyWith<$Res> {
+  __$$UserCredentialsImplCopyWithImpl(
+      _$UserCredentialsImpl _value, $Res Function(_$UserCredentialsImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of UserCredentials
@@ -120,9 +124,9 @@ class __$$ApiResponseImplCopyWithImpl<$Res>
   $Res call({
     Object? success = null,
     Object? messages = freezed,
-    Object? data = null,
+    Object? data = freezed,
   }) {
-    return _then(_$ApiResponseImpl(
+    return _then(_$UserCredentialsImpl(
       success: null == success
           ? _value.success
           : success // ignore: cast_nullable_to_non_nullable
@@ -130,30 +134,30 @@ class __$$ApiResponseImplCopyWithImpl<$Res>
       messages: freezed == messages
           ? _value.messages
           : messages // ignore: cast_nullable_to_non_nullable
-              as String?,
-      data: null == data
+              as dynamic,
+      data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as Data,
+              as Data?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$ApiResponseImpl implements _ApiResponse {
-  const _$ApiResponseImpl(
+class _$UserCredentialsImpl implements _UserCredentials {
+  const _$UserCredentialsImpl(
       {required this.success, this.messages, required this.data});
 
-  factory _$ApiResponseImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ApiResponseImplFromJson(json);
+  factory _$UserCredentialsImpl.fromJson(Map<String, dynamic> json) =>
+      _$$UserCredentialsImplFromJson(json);
 
   @override
   final bool success;
   @override
-  final String? messages;
+  final dynamic messages;
   @override
-  final Data data;
+  final Data? data;
 
   @override
   String toString() {
@@ -164,54 +168,55 @@ class _$ApiResponseImpl implements _ApiResponse {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ApiResponseImpl &&
+            other is _$UserCredentialsImpl &&
             (identical(other.success, success) || other.success == success) &&
-            (identical(other.messages, messages) ||
-                other.messages == messages) &&
+            const DeepCollectionEquality().equals(other.messages, messages) &&
             (identical(other.data, data) || other.data == data));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, success, messages, data);
+  int get hashCode => Object.hash(runtimeType, success,
+      const DeepCollectionEquality().hash(messages), data);
 
   /// Create a copy of UserCredentials
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ApiResponseImplCopyWith<_$ApiResponseImpl> get copyWith =>
-      __$$ApiResponseImplCopyWithImpl<_$ApiResponseImpl>(this, _$identity);
+  _$$UserCredentialsImplCopyWith<_$UserCredentialsImpl> get copyWith =>
+      __$$UserCredentialsImplCopyWithImpl<_$UserCredentialsImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ApiResponseImplToJson(
+    return _$$UserCredentialsImplToJson(
       this,
     );
   }
 }
 
-abstract class _ApiResponse implements UserCredentials {
-  const factory _ApiResponse(
+abstract class _UserCredentials implements UserCredentials {
+  const factory _UserCredentials(
       {required final bool success,
-      final String? messages,
-      required final Data data}) = _$ApiResponseImpl;
+      final dynamic messages,
+      required final Data? data}) = _$UserCredentialsImpl;
 
-  factory _ApiResponse.fromJson(Map<String, dynamic> json) =
-      _$ApiResponseImpl.fromJson;
+  factory _UserCredentials.fromJson(Map<String, dynamic> json) =
+      _$UserCredentialsImpl.fromJson;
 
   @override
   bool get success;
   @override
-  String? get messages;
+  dynamic get messages;
   @override
-  Data get data;
+  Data? get data;
 
   /// Create a copy of UserCredentials
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ApiResponseImplCopyWith<_$ApiResponseImpl> get copyWith =>
+  _$$UserCredentialsImplCopyWith<_$UserCredentialsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

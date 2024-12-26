@@ -9,6 +9,7 @@ import 'package:karam/core/constants/assets_svg.dart';
 import 'package:karam/core/constants/spacing.dart';
 import 'package:karam/core/extensions/internalization.dart';
 import 'package:karam/core/shared/UI/gaps.dart';
+import 'package:karam/core/shared/injection.dart';
 import 'package:karam/core/shared/widgets/app_input.dart';
 import 'package:karam/core/shared/widgets/body_warpper.dart';
 import 'package:karam/core/shared/widgets/gradient_button.dart';
@@ -28,6 +29,22 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final loginStateNotifier = ref.watch(loginStateNotifierProvider.notifier);
+
+    bool loadingState = ref.watch(loginStateNotifierProvider).maybeWhen(
+          orElse: () => false,
+          initial: () => true,
+        );
+    ref.listen(loginStateNotifierProvider, (previous, next) {
+      next.maybeWhen(
+          orElse: () {},
+          failure: (error) {
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: Text(error.message!),
+            ));
+          });
+    });
+
     return Scaffold(
       resizeToAvoidBottomInset: true,
       body: BodyWrapper(
@@ -58,6 +75,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   AppInput(
                     title: context.translate().username,
                     hint: context.translate().username,
+                    isLoading: loadingState,
+                    controller: loginStateNotifier.username,
                     validator: (username) {
                       if (username == null ||
                           username.isEmpty ||
@@ -69,9 +88,11 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   ),
                   AppSpacing.customGap(24),
                   AppInput(
+                    isLoading: loadingState,
                     obscureText: true,
                     title: context.translate().password,
                     hint: context.translate().password,
+                    controller: loginStateNotifier.password,
                     toggleObscureText: true,
                     autofillHints: const [
                       AutofillHints.username,
@@ -85,26 +106,32 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     },
                   ),
                   AppSpacing.bigGap,
-                  PrimaryGradientButton(
-                    onPressed: () {
-                      // Validate returns true if the form is valid, or false otherwise.
-                      if (_formKey.currentState!.validate()) {
-                        // If the form is valid, display a snackbar. In the real world,
-                        // you'd often call a server or save the information in a database.
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('Processing Data')),
-                        );
-                      }
-                    },
-                    child: Center(
-                      child: Text(
-                        context.translate().login.firstToUpperCase(),
-                        style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                              color: Theme.of(context).colorScheme.secondary,
+                  ref.watch(loginStateNotifierProvider).maybeWhen(
+                        orElse: () {
+                          return PrimaryGradientButton(
+                            onPressed: () {
+                              if (_formKey.currentState!.validate()) {
+                                loginStateNotifier.login();
+                              }
+                            },
+                            child: Center(
+                              child: Text(
+                                context.translate().login.firstToUpperCase(),
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .labelLarge
+                                    ?.copyWith(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .secondary,
+                                    ),
+                              ),
                             ),
+                          );
+                        },
+                        initial: () =>
+                            const Center(child: CircularProgressIndicator()),
                       ),
-                    ),
-                  ),
                   AppSpacing.bigGap,
                   Align(
                     child: Text(

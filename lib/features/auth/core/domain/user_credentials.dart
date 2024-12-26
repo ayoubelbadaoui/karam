@@ -7,9 +7,9 @@ part 'user_credentials.freezed.dart';
 class UserCredentials with _$UserCredentials {
   const factory UserCredentials({
     required bool success,
-    String? messages,
-    required Data data,
-  }) = _ApiResponse;
+    dynamic messages,
+    required Data? data,
+  }) = _UserCredentials;
 
   factory UserCredentials.fromJson(Map<String, dynamic> json) =>
       _$UserCredentialsFromJson(json);

@@ -19,6 +19,6 @@ void main() async {
   );
   setGoogleFontsLicenses();
   runApp(const ProviderScope(
-    child: App(),
+    child: AppWidget(),
   ));
 }
