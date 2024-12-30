@@ -22,9 +22,10 @@ mixin _$AuthState {
     required TResult Function() unauthenticated,
     required TResult Function(UserCredentials userCredentials) authenticated,
     required TResult Function() passwordRecoverSent,
-    required TResult Function() userCreated,
+    required TResult Function(String? msg) userCreated,
     required TResult Function(AuthFailure authFailure) failure,
     required TResult Function() unConfirmed,
+    required TResult Function() unKnown,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -33,9 +34,10 @@ mixin _$AuthState {
     TResult? Function()? unauthenticated,
     TResult? Function(UserCredentials userCredentials)? authenticated,
     TResult? Function()? passwordRecoverSent,
-    TResult? Function()? userCreated,
+    TResult? Function(String? msg)? userCreated,
     TResult? Function(AuthFailure authFailure)? failure,
     TResult? Function()? unConfirmed,
+    TResult? Function()? unKnown,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -44,9 +46,10 @@ mixin _$AuthState {
     TResult Function()? unauthenticated,
     TResult Function(UserCredentials userCredentials)? authenticated,
     TResult Function()? passwordRecoverSent,
-    TResult Function()? userCreated,
+    TResult Function(String? msg)? userCreated,
     TResult Function(AuthFailure authFailure)? failure,
     TResult Function()? unConfirmed,
+    TResult Function()? unKnown,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -59,6 +62,7 @@ mixin _$AuthState {
     required TResult Function(_UserCreated value) userCreated,
     required TResult Function(_Failure value) failure,
     required TResult Function(_UnConfirmed value) unConfirmed,
+    required TResult Function(_UnKnown value) unKnown,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -70,6 +74,7 @@ mixin _$AuthState {
     TResult? Function(_UserCreated value)? userCreated,
     TResult? Function(_Failure value)? failure,
     TResult? Function(_UnConfirmed value)? unConfirmed,
+    TResult? Function(_UnKnown value)? unKnown,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -81,6 +86,7 @@ mixin _$AuthState {
     TResult Function(_UserCreated value)? userCreated,
     TResult Function(_Failure value)? failure,
     TResult Function(_UnConfirmed value)? unConfirmed,
+    TResult Function(_UnKnown value)? unKnown,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -151,9 +157,10 @@ class _$InitialImpl extends _Initial {
     required TResult Function() unauthenticated,
     required TResult Function(UserCredentials userCredentials) authenticated,
     required TResult Function() passwordRecoverSent,
-    required TResult Function() userCreated,
+    required TResult Function(String? msg) userCreated,
     required TResult Function(AuthFailure authFailure) failure,
     required TResult Function() unConfirmed,
+    required TResult Function() unKnown,
   }) {
     return initial();
   }
@@ -165,9 +172,10 @@ class _$InitialImpl extends _Initial {
     TResult? Function()? unauthenticated,
     TResult? Function(UserCredentials userCredentials)? authenticated,
     TResult? Function()? passwordRecoverSent,
-    TResult? Function()? userCreated,
+    TResult? Function(String? msg)? userCreated,
     TResult? Function(AuthFailure authFailure)? failure,
     TResult? Function()? unConfirmed,
+    TResult? Function()? unKnown,
   }) {
     return initial?.call();
   }
@@ -179,9 +187,10 @@ class _$InitialImpl extends _Initial {
     TResult Function()? unauthenticated,
     TResult Function(UserCredentials userCredentials)? authenticated,
     TResult Function()? passwordRecoverSent,
-    TResult Function()? userCreated,
+    TResult Function(String? msg)? userCreated,
     TResult Function(AuthFailure authFailure)? failure,
     TResult Function()? unConfirmed,
+    TResult Function()? unKnown,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -200,6 +209,7 @@ class _$InitialImpl extends _Initial {
     required TResult Function(_UserCreated value) userCreated,
     required TResult Function(_Failure value) failure,
     required TResult Function(_UnConfirmed value) unConfirmed,
+    required TResult Function(_UnKnown value) unKnown,
   }) {
     return initial(this);
   }
@@ -214,6 +224,7 @@ class _$InitialImpl extends _Initial {
     TResult? Function(_UserCreated value)? userCreated,
     TResult? Function(_Failure value)? failure,
     TResult? Function(_UnConfirmed value)? unConfirmed,
+    TResult? Function(_UnKnown value)? unKnown,
   }) {
     return initial?.call(this);
   }
@@ -228,6 +239,7 @@ class _$InitialImpl extends _Initial {
     TResult Function(_UserCreated value)? userCreated,
     TResult Function(_Failure value)? failure,
     TResult Function(_UnConfirmed value)? unConfirmed,
+    TResult Function(_UnKnown value)? unKnown,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -287,9 +299,10 @@ class _$UnauthenticatedImpl extends _Unauthenticated {
     required TResult Function() unauthenticated,
     required TResult Function(UserCredentials userCredentials) authenticated,
     required TResult Function() passwordRecoverSent,
-    required TResult Function() userCreated,
+    required TResult Function(String? msg) userCreated,
     required TResult Function(AuthFailure authFailure) failure,
     required TResult Function() unConfirmed,
+    required TResult Function() unKnown,
   }) {
     return unauthenticated();
   }
@@ -301,9 +314,10 @@ class _$UnauthenticatedImpl extends _Unauthenticated {
     TResult? Function()? unauthenticated,
     TResult? Function(UserCredentials userCredentials)? authenticated,
     TResult? Function()? passwordRecoverSent,
-    TResult? Function()? userCreated,
+    TResult? Function(String? msg)? userCreated,
     TResult? Function(AuthFailure authFailure)? failure,
     TResult? Function()? unConfirmed,
+    TResult? Function()? unKnown,
   }) {
     return unauthenticated?.call();
   }
@@ -315,9 +329,10 @@ class _$UnauthenticatedImpl extends _Unauthenticated {
     TResult Function()? unauthenticated,
     TResult Function(UserCredentials userCredentials)? authenticated,
     TResult Function()? passwordRecoverSent,
-    TResult Function()? userCreated,
+    TResult Function(String? msg)? userCreated,
     TResult Function(AuthFailure authFailure)? failure,
     TResult Function()? unConfirmed,
+    TResult Function()? unKnown,
     required TResult orElse(),
   }) {
     if (unauthenticated != null) {
@@ -336,6 +351,7 @@ class _$UnauthenticatedImpl extends _Unauthenticated {
     required TResult Function(_UserCreated value) userCreated,
     required TResult Function(_Failure value) failure,
     required TResult Function(_UnConfirmed value) unConfirmed,
+    required TResult Function(_UnKnown value) unKnown,
   }) {
     return unauthenticated(this);
   }
@@ -350,6 +366,7 @@ class _$UnauthenticatedImpl extends _Unauthenticated {
     TResult? Function(_UserCreated value)? userCreated,
     TResult? Function(_Failure value)? failure,
     TResult? Function(_UnConfirmed value)? unConfirmed,
+    TResult? Function(_UnKnown value)? unKnown,
   }) {
     return unauthenticated?.call(this);
   }
@@ -364,6 +381,7 @@ class _$UnauthenticatedImpl extends _Unauthenticated {
     TResult Function(_UserCreated value)? userCreated,
     TResult Function(_Failure value)? failure,
     TResult Function(_UnConfirmed value)? unConfirmed,
+    TResult Function(_UnKnown value)? unKnown,
     required TResult orElse(),
   }) {
     if (unauthenticated != null) {
@@ -463,9 +481,10 @@ class _$AuthenticatedImpl extends _Authenticated {
     required TResult Function() unauthenticated,
     required TResult Function(UserCredentials userCredentials) authenticated,
     required TResult Function() passwordRecoverSent,
-    required TResult Function() userCreated,
+    required TResult Function(String? msg) userCreated,
     required TResult Function(AuthFailure authFailure) failure,
     required TResult Function() unConfirmed,
+    required TResult Function() unKnown,
   }) {
     return authenticated(userCredentials);
   }
@@ -477,9 +496,10 @@ class _$AuthenticatedImpl extends _Authenticated {
     TResult? Function()? unauthenticated,
     TResult? Function(UserCredentials userCredentials)? authenticated,
     TResult? Function()? passwordRecoverSent,
-    TResult? Function()? userCreated,
+    TResult? Function(String? msg)? userCreated,
     TResult? Function(AuthFailure authFailure)? failure,
     TResult? Function()? unConfirmed,
+    TResult? Function()? unKnown,
   }) {
     return authenticated?.call(userCredentials);
   }
@@ -491,9 +511,10 @@ class _$AuthenticatedImpl extends _Authenticated {
     TResult Function()? unauthenticated,
     TResult Function(UserCredentials userCredentials)? authenticated,
     TResult Function()? passwordRecoverSent,
-    TResult Function()? userCreated,
+    TResult Function(String? msg)? userCreated,
     TResult Function(AuthFailure authFailure)? failure,
     TResult Function()? unConfirmed,
+    TResult Function()? unKnown,
     required TResult orElse(),
   }) {
     if (authenticated != null) {
@@ -512,6 +533,7 @@ class _$AuthenticatedImpl extends _Authenticated {
     required TResult Function(_UserCreated value) userCreated,
     required TResult Function(_Failure value) failure,
     required TResult Function(_UnConfirmed value) unConfirmed,
+    required TResult Function(_UnKnown value) unKnown,
   }) {
     return authenticated(this);
   }
@@ -526,6 +548,7 @@ class _$AuthenticatedImpl extends _Authenticated {
     TResult? Function(_UserCreated value)? userCreated,
     TResult? Function(_Failure value)? failure,
     TResult? Function(_UnConfirmed value)? unConfirmed,
+    TResult? Function(_UnKnown value)? unKnown,
   }) {
     return authenticated?.call(this);
   }
@@ -540,6 +563,7 @@ class _$AuthenticatedImpl extends _Authenticated {
     TResult Function(_UserCreated value)? userCreated,
     TResult Function(_Failure value)? failure,
     TResult Function(_UnConfirmed value)? unConfirmed,
+    TResult Function(_UnKnown value)? unKnown,
     required TResult orElse(),
   }) {
     if (authenticated != null) {
@@ -609,9 +633,10 @@ class _$PasswordRecoverSentImpl extends _PasswordRecoverSent {
     required TResult Function() unauthenticated,
     required TResult Function(UserCredentials userCredentials) authenticated,
     required TResult Function() passwordRecoverSent,
-    required TResult Function() userCreated,
+    required TResult Function(String? msg) userCreated,
     required TResult Function(AuthFailure authFailure) failure,
     required TResult Function() unConfirmed,
+    required TResult Function() unKnown,
   }) {
     return passwordRecoverSent();
   }
@@ -623,9 +648,10 @@ class _$PasswordRecoverSentImpl extends _PasswordRecoverSent {
     TResult? Function()? unauthenticated,
     TResult? Function(UserCredentials userCredentials)? authenticated,
     TResult? Function()? passwordRecoverSent,
-    TResult? Function()? userCreated,
+    TResult? Function(String? msg)? userCreated,
     TResult? Function(AuthFailure authFailure)? failure,
     TResult? Function()? unConfirmed,
+    TResult? Function()? unKnown,
   }) {
     return passwordRecoverSent?.call();
   }
@@ -637,9 +663,10 @@ class _$PasswordRecoverSentImpl extends _PasswordRecoverSent {
     TResult Function()? unauthenticated,
     TResult Function(UserCredentials userCredentials)? authenticated,
     TResult Function()? passwordRecoverSent,
-    TResult Function()? userCreated,
+    TResult Function(String? msg)? userCreated,
     TResult Function(AuthFailure authFailure)? failure,
     TResult Function()? unConfirmed,
+    TResult Function()? unKnown,
     required TResult orElse(),
   }) {
     if (passwordRecoverSent != null) {
@@ -658,6 +685,7 @@ class _$PasswordRecoverSentImpl extends _PasswordRecoverSent {
     required TResult Function(_UserCreated value) userCreated,
     required TResult Function(_Failure value) failure,
     required TResult Function(_UnConfirmed value) unConfirmed,
+    required TResult Function(_UnKnown value) unKnown,
   }) {
     return passwordRecoverSent(this);
   }
@@ -672,6 +700,7 @@ class _$PasswordRecoverSentImpl extends _PasswordRecoverSent {
     TResult? Function(_UserCreated value)? userCreated,
     TResult? Function(_Failure value)? failure,
     TResult? Function(_UnConfirmed value)? unConfirmed,
+    TResult? Function(_UnKnown value)? unKnown,
   }) {
     return passwordRecoverSent?.call(this);
   }
@@ -686,6 +715,7 @@ class _$PasswordRecoverSentImpl extends _PasswordRecoverSent {
     TResult Function(_UserCreated value)? userCreated,
     TResult Function(_Failure value)? failure,
     TResult Function(_UnConfirmed value)? unConfirmed,
+    TResult Function(_UnKnown value)? unKnown,
     required TResult orElse(),
   }) {
     if (passwordRecoverSent != null) {
@@ -705,6 +735,8 @@ abstract class _$$UserCreatedImplCopyWith<$Res> {
   factory _$$UserCreatedImplCopyWith(
           _$UserCreatedImpl value, $Res Function(_$UserCreatedImpl) then) =
       __$$UserCreatedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String? msg});
 }
 
 /// @nodoc
@@ -717,26 +749,51 @@ class __$$UserCreatedImplCopyWithImpl<$Res>
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? msg = freezed,
+  }) {
+    return _then(_$UserCreatedImpl(
+      freezed == msg
+          ? _value.msg
+          : msg // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$UserCreatedImpl extends _UserCreated {
-  const _$UserCreatedImpl() : super._();
+  const _$UserCreatedImpl(this.msg) : super._();
+
+  @override
+  final String? msg;
 
   @override
   String toString() {
-    return 'AuthState.userCreated()';
+    return 'AuthState.userCreated(msg: $msg)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$UserCreatedImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$UserCreatedImpl &&
+            (identical(other.msg, msg) || other.msg == msg));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, msg);
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UserCreatedImplCopyWith<_$UserCreatedImpl> get copyWith =>
+      __$$UserCreatedImplCopyWithImpl<_$UserCreatedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -745,11 +802,12 @@ class _$UserCreatedImpl extends _UserCreated {
     required TResult Function() unauthenticated,
     required TResult Function(UserCredentials userCredentials) authenticated,
     required TResult Function() passwordRecoverSent,
-    required TResult Function() userCreated,
+    required TResult Function(String? msg) userCreated,
     required TResult Function(AuthFailure authFailure) failure,
     required TResult Function() unConfirmed,
+    required TResult Function() unKnown,
   }) {
-    return userCreated();
+    return userCreated(msg);
   }
 
   @override
@@ -759,11 +817,12 @@ class _$UserCreatedImpl extends _UserCreated {
     TResult? Function()? unauthenticated,
     TResult? Function(UserCredentials userCredentials)? authenticated,
     TResult? Function()? passwordRecoverSent,
-    TResult? Function()? userCreated,
+    TResult? Function(String? msg)? userCreated,
     TResult? Function(AuthFailure authFailure)? failure,
     TResult? Function()? unConfirmed,
+    TResult? Function()? unKnown,
   }) {
-    return userCreated?.call();
+    return userCreated?.call(msg);
   }
 
   @override
@@ -773,13 +832,14 @@ class _$UserCreatedImpl extends _UserCreated {
     TResult Function()? unauthenticated,
     TResult Function(UserCredentials userCredentials)? authenticated,
     TResult Function()? passwordRecoverSent,
-    TResult Function()? userCreated,
+    TResult Function(String? msg)? userCreated,
     TResult Function(AuthFailure authFailure)? failure,
     TResult Function()? unConfirmed,
+    TResult Function()? unKnown,
     required TResult orElse(),
   }) {
     if (userCreated != null) {
-      return userCreated();
+      return userCreated(msg);
     }
     return orElse();
   }
@@ -794,6 +854,7 @@ class _$UserCreatedImpl extends _UserCreated {
     required TResult Function(_UserCreated value) userCreated,
     required TResult Function(_Failure value) failure,
     required TResult Function(_UnConfirmed value) unConfirmed,
+    required TResult Function(_UnKnown value) unKnown,
   }) {
     return userCreated(this);
   }
@@ -808,6 +869,7 @@ class _$UserCreatedImpl extends _UserCreated {
     TResult? Function(_UserCreated value)? userCreated,
     TResult? Function(_Failure value)? failure,
     TResult? Function(_UnConfirmed value)? unConfirmed,
+    TResult? Function(_UnKnown value)? unKnown,
   }) {
     return userCreated?.call(this);
   }
@@ -822,6 +884,7 @@ class _$UserCreatedImpl extends _UserCreated {
     TResult Function(_UserCreated value)? userCreated,
     TResult Function(_Failure value)? failure,
     TResult Function(_UnConfirmed value)? unConfirmed,
+    TResult Function(_UnKnown value)? unKnown,
     required TResult orElse(),
   }) {
     if (userCreated != null) {
@@ -832,8 +895,16 @@ class _$UserCreatedImpl extends _UserCreated {
 }
 
 abstract class _UserCreated extends AuthState {
-  const factory _UserCreated() = _$UserCreatedImpl;
+  const factory _UserCreated(final String? msg) = _$UserCreatedImpl;
   const _UserCreated._() : super._();
+
+  String? get msg;
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UserCreatedImplCopyWith<_$UserCreatedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -921,9 +992,10 @@ class _$FailureImpl extends _Failure {
     required TResult Function() unauthenticated,
     required TResult Function(UserCredentials userCredentials) authenticated,
     required TResult Function() passwordRecoverSent,
-    required TResult Function() userCreated,
+    required TResult Function(String? msg) userCreated,
     required TResult Function(AuthFailure authFailure) failure,
     required TResult Function() unConfirmed,
+    required TResult Function() unKnown,
   }) {
     return failure(authFailure);
   }
@@ -935,9 +1007,10 @@ class _$FailureImpl extends _Failure {
     TResult? Function()? unauthenticated,
     TResult? Function(UserCredentials userCredentials)? authenticated,
     TResult? Function()? passwordRecoverSent,
-    TResult? Function()? userCreated,
+    TResult? Function(String? msg)? userCreated,
     TResult? Function(AuthFailure authFailure)? failure,
     TResult? Function()? unConfirmed,
+    TResult? Function()? unKnown,
   }) {
     return failure?.call(authFailure);
   }
@@ -949,9 +1022,10 @@ class _$FailureImpl extends _Failure {
     TResult Function()? unauthenticated,
     TResult Function(UserCredentials userCredentials)? authenticated,
     TResult Function()? passwordRecoverSent,
-    TResult Function()? userCreated,
+    TResult Function(String? msg)? userCreated,
     TResult Function(AuthFailure authFailure)? failure,
     TResult Function()? unConfirmed,
+    TResult Function()? unKnown,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -970,6 +1044,7 @@ class _$FailureImpl extends _Failure {
     required TResult Function(_UserCreated value) userCreated,
     required TResult Function(_Failure value) failure,
     required TResult Function(_UnConfirmed value) unConfirmed,
+    required TResult Function(_UnKnown value) unKnown,
   }) {
     return failure(this);
   }
@@ -984,6 +1059,7 @@ class _$FailureImpl extends _Failure {
     TResult? Function(_UserCreated value)? userCreated,
     TResult? Function(_Failure value)? failure,
     TResult? Function(_UnConfirmed value)? unConfirmed,
+    TResult? Function(_UnKnown value)? unKnown,
   }) {
     return failure?.call(this);
   }
@@ -998,6 +1074,7 @@ class _$FailureImpl extends _Failure {
     TResult Function(_UserCreated value)? userCreated,
     TResult Function(_Failure value)? failure,
     TResult Function(_UnConfirmed value)? unConfirmed,
+    TResult Function(_UnKnown value)? unKnown,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -1065,9 +1142,10 @@ class _$UnConfirmedImpl extends _UnConfirmed {
     required TResult Function() unauthenticated,
     required TResult Function(UserCredentials userCredentials) authenticated,
     required TResult Function() passwordRecoverSent,
-    required TResult Function() userCreated,
+    required TResult Function(String? msg) userCreated,
     required TResult Function(AuthFailure authFailure) failure,
     required TResult Function() unConfirmed,
+    required TResult Function() unKnown,
   }) {
     return unConfirmed();
   }
@@ -1079,9 +1157,10 @@ class _$UnConfirmedImpl extends _UnConfirmed {
     TResult? Function()? unauthenticated,
     TResult? Function(UserCredentials userCredentials)? authenticated,
     TResult? Function()? passwordRecoverSent,
-    TResult? Function()? userCreated,
+    TResult? Function(String? msg)? userCreated,
     TResult? Function(AuthFailure authFailure)? failure,
     TResult? Function()? unConfirmed,
+    TResult? Function()? unKnown,
   }) {
     return unConfirmed?.call();
   }
@@ -1093,9 +1172,10 @@ class _$UnConfirmedImpl extends _UnConfirmed {
     TResult Function()? unauthenticated,
     TResult Function(UserCredentials userCredentials)? authenticated,
     TResult Function()? passwordRecoverSent,
-    TResult Function()? userCreated,
+    TResult Function(String? msg)? userCreated,
     TResult Function(AuthFailure authFailure)? failure,
     TResult Function()? unConfirmed,
+    TResult Function()? unKnown,
     required TResult orElse(),
   }) {
     if (unConfirmed != null) {
@@ -1114,6 +1194,7 @@ class _$UnConfirmedImpl extends _UnConfirmed {
     required TResult Function(_UserCreated value) userCreated,
     required TResult Function(_Failure value) failure,
     required TResult Function(_UnConfirmed value) unConfirmed,
+    required TResult Function(_UnKnown value) unKnown,
   }) {
     return unConfirmed(this);
   }
@@ -1128,6 +1209,7 @@ class _$UnConfirmedImpl extends _UnConfirmed {
     TResult? Function(_UserCreated value)? userCreated,
     TResult? Function(_Failure value)? failure,
     TResult? Function(_UnConfirmed value)? unConfirmed,
+    TResult? Function(_UnKnown value)? unKnown,
   }) {
     return unConfirmed?.call(this);
   }
@@ -1142,6 +1224,7 @@ class _$UnConfirmedImpl extends _UnConfirmed {
     TResult Function(_UserCreated value)? userCreated,
     TResult Function(_Failure value)? failure,
     TResult Function(_UnConfirmed value)? unConfirmed,
+    TResult Function(_UnKnown value)? unKnown,
     required TResult orElse(),
   }) {
     if (unConfirmed != null) {
@@ -1154,4 +1237,146 @@ class _$UnConfirmedImpl extends _UnConfirmed {
 abstract class _UnConfirmed extends AuthState {
   const factory _UnConfirmed() = _$UnConfirmedImpl;
   const _UnConfirmed._() : super._();
+}
+
+/// @nodoc
+abstract class _$$UnKnownImplCopyWith<$Res> {
+  factory _$$UnKnownImplCopyWith(
+          _$UnKnownImpl value, $Res Function(_$UnKnownImpl) then) =
+      __$$UnKnownImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$UnKnownImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$UnKnownImpl>
+    implements _$$UnKnownImplCopyWith<$Res> {
+  __$$UnKnownImplCopyWithImpl(
+      _$UnKnownImpl _value, $Res Function(_$UnKnownImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$UnKnownImpl extends _UnKnown {
+  const _$UnKnownImpl() : super._();
+
+  @override
+  String toString() {
+    return 'AuthState.unKnown()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$UnKnownImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() unauthenticated,
+    required TResult Function(UserCredentials userCredentials) authenticated,
+    required TResult Function() passwordRecoverSent,
+    required TResult Function(String? msg) userCreated,
+    required TResult Function(AuthFailure authFailure) failure,
+    required TResult Function() unConfirmed,
+    required TResult Function() unKnown,
+  }) {
+    return unKnown();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? unauthenticated,
+    TResult? Function(UserCredentials userCredentials)? authenticated,
+    TResult? Function()? passwordRecoverSent,
+    TResult? Function(String? msg)? userCreated,
+    TResult? Function(AuthFailure authFailure)? failure,
+    TResult? Function()? unConfirmed,
+    TResult? Function()? unKnown,
+  }) {
+    return unKnown?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? unauthenticated,
+    TResult Function(UserCredentials userCredentials)? authenticated,
+    TResult Function()? passwordRecoverSent,
+    TResult Function(String? msg)? userCreated,
+    TResult Function(AuthFailure authFailure)? failure,
+    TResult Function()? unConfirmed,
+    TResult Function()? unKnown,
+    required TResult orElse(),
+  }) {
+    if (unKnown != null) {
+      return unKnown();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Unauthenticated value) unauthenticated,
+    required TResult Function(_Authenticated value) authenticated,
+    required TResult Function(_PasswordRecoverSent value) passwordRecoverSent,
+    required TResult Function(_UserCreated value) userCreated,
+    required TResult Function(_Failure value) failure,
+    required TResult Function(_UnConfirmed value) unConfirmed,
+    required TResult Function(_UnKnown value) unKnown,
+  }) {
+    return unKnown(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Unauthenticated value)? unauthenticated,
+    TResult? Function(_Authenticated value)? authenticated,
+    TResult? Function(_PasswordRecoverSent value)? passwordRecoverSent,
+    TResult? Function(_UserCreated value)? userCreated,
+    TResult? Function(_Failure value)? failure,
+    TResult? Function(_UnConfirmed value)? unConfirmed,
+    TResult? Function(_UnKnown value)? unKnown,
+  }) {
+    return unKnown?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Unauthenticated value)? unauthenticated,
+    TResult Function(_Authenticated value)? authenticated,
+    TResult Function(_PasswordRecoverSent value)? passwordRecoverSent,
+    TResult Function(_UserCreated value)? userCreated,
+    TResult Function(_Failure value)? failure,
+    TResult Function(_UnConfirmed value)? unConfirmed,
+    TResult Function(_UnKnown value)? unKnown,
+    required TResult orElse(),
+  }) {
+    if (unKnown != null) {
+      return unKnown(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UnKnown extends AuthState {
+  const factory _UnKnown() = _$UnKnownImpl;
+  const _UnKnown._() : super._();
 }

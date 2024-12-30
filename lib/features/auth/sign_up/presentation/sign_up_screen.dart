@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bounce_tapper/bounce_tapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_regex/flutter_regex.dart';
@@ -37,12 +39,19 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
 
     ref.listen(loginStateNotifierProvider, (previous, next) {
       next.maybeWhen(
-          orElse: () {},
-          failure: (error) {
-            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-              content: Text(error.message!),
-            ));
-          });
+        orElse: () {},
+        userCreated: (msg) {
+          ref.watch(appRouterProvider).pop();
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text(msg!),
+          ));
+        },
+        failure: (error) {
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text(error.message!),
+          ));
+        },
+      );
     });
     return Scaffold(
       resizeToAvoidBottomInset: true,

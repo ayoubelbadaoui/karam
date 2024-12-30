@@ -11,7 +11,7 @@ import 'package:karam/features/dashboard_screen/core/application/bottom_navigati
 
 class AuthNotifier extends StateNotifier<AuthState> {
   AuthNotifier(this._authInfra, this._bottomNavigationNotifier)
-      : super(const AuthState.unauthenticated());
+      : super(const AuthState.unKnown());
 
   final AuthInfra _authInfra;
 
@@ -52,7 +52,10 @@ class AuthNotifier extends StateNotifier<AuthState> {
         state = AuthState.failure(f);
       },
       (r) {
-        state = const AuthState.userCreated();
+        _clearControllers();
+
+        state =
+            const AuthState.userCreated("Verfication link sent to your email");
       },
     );
   }

@@ -35,10 +35,6 @@ class _AppState extends ConsumerState<AppWidget> {
         authenticated: (d) {
           ref.read(appRouterProvider).go(HomeScreen.path);
         },
-        failure: (msg) {
-          log('failed state auth');
-          // ref.read(appRouterProvider).go(OnBoardingScreen.path);
-        },
         unauthenticated: () {
           ref.read(appRouterProvider).go(OnBoardingScreen.path);
         },

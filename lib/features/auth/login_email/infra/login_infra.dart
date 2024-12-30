@@ -69,8 +69,8 @@ class AuthInfra {
 
   Future<EmailConfirmationOrFailure> signUp({required UserKaram user}) async {
     final jsonReq = jsonEncode({
-      "firstName": user.firstName,
-      "lastName": user.name,
+      "prenom": user.firstName,
+      "nom": user.name,
       "email": user.email,
       "password": user.password,
       "username": user.username,
