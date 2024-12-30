@@ -19,7 +19,6 @@ mixin _$RecommendedActionsStates {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loading,
     required TResult Function(RecommendedFailure failure) failure,
     required TResult Function(RecommendedActions actions) loaded,
   }) =>
@@ -27,7 +26,6 @@ mixin _$RecommendedActionsStates {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? loading,
     TResult? Function(RecommendedFailure failure)? failure,
     TResult? Function(RecommendedActions actions)? loaded,
   }) =>
@@ -35,7 +33,6 @@ mixin _$RecommendedActionsStates {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
     TResult Function(RecommendedFailure failure)? failure,
     TResult Function(RecommendedActions actions)? loaded,
     required TResult orElse(),
@@ -44,7 +41,6 @@ mixin _$RecommendedActionsStates {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
     required TResult Function(_Failure value) failure,
     required TResult Function(_Loaded value) loaded,
   }) =>
@@ -52,7 +48,6 @@ mixin _$RecommendedActionsStates {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
     TResult? Function(_Failure value)? failure,
     TResult? Function(_Loaded value)? loaded,
   }) =>
@@ -60,7 +55,6 @@ mixin _$RecommendedActionsStates {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
     TResult Function(_Failure value)? failure,
     TResult Function(_Loaded value)? loaded,
     required TResult orElse(),
@@ -132,7 +126,6 @@ class _$InitialImpl extends _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loading,
     required TResult Function(RecommendedFailure failure) failure,
     required TResult Function(RecommendedActions actions) loaded,
   }) {
@@ -143,7 +136,6 @@ class _$InitialImpl extends _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? loading,
     TResult? Function(RecommendedFailure failure)? failure,
     TResult? Function(RecommendedActions actions)? loaded,
   }) {
@@ -154,7 +146,6 @@ class _$InitialImpl extends _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
     TResult Function(RecommendedFailure failure)? failure,
     TResult Function(RecommendedActions actions)? loaded,
     required TResult orElse(),
@@ -169,7 +160,6 @@ class _$InitialImpl extends _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
     required TResult Function(_Failure value) failure,
     required TResult Function(_Loaded value) loaded,
   }) {
@@ -180,7 +170,6 @@ class _$InitialImpl extends _Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
     TResult? Function(_Failure value)? failure,
     TResult? Function(_Loaded value)? loaded,
   }) {
@@ -191,7 +180,6 @@ class _$InitialImpl extends _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
     TResult Function(_Failure value)? failure,
     TResult Function(_Loaded value)? loaded,
     required TResult orElse(),
@@ -206,124 +194,6 @@ class _$InitialImpl extends _Initial {
 abstract class _Initial extends RecommendedActionsStates {
   const factory _Initial() = _$InitialImpl;
   const _Initial._() : super._();
-}
-
-/// @nodoc
-abstract class _$$LoadingImplCopyWith<$Res> {
-  factory _$$LoadingImplCopyWith(
-          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
-      __$$LoadingImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$RecommendedActionsStatesCopyWithImpl<$Res, _$LoadingImpl>
-    implements _$$LoadingImplCopyWith<$Res> {
-  __$$LoadingImplCopyWithImpl(
-      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of RecommendedActionsStates
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$LoadingImpl extends _Loading {
-  const _$LoadingImpl() : super._();
-
-  @override
-  String toString() {
-    return 'RecommendedActionsStates.loading()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadingImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(RecommendedFailure failure) failure,
-    required TResult Function(RecommendedActions actions) loaded,
-  }) {
-    return loading();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(RecommendedFailure failure)? failure,
-    TResult? Function(RecommendedActions actions)? loaded,
-  }) {
-    return loading?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(RecommendedFailure failure)? failure,
-    TResult Function(RecommendedActions actions)? loaded,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Failure value) failure,
-    required TResult Function(_Loaded value) loaded,
-  }) {
-    return loading(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Failure value)? failure,
-    TResult? Function(_Loaded value)? loaded,
-  }) {
-    return loading?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Failure value)? failure,
-    TResult Function(_Loaded value)? loaded,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Loading extends RecommendedActionsStates {
-  const factory _Loading() = _$LoadingImpl;
-  const _Loading._() : super._();
 }
 
 /// @nodoc
@@ -407,7 +277,6 @@ class _$FailureImpl extends _Failure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loading,
     required TResult Function(RecommendedFailure failure) failure,
     required TResult Function(RecommendedActions actions) loaded,
   }) {
@@ -418,7 +287,6 @@ class _$FailureImpl extends _Failure {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? loading,
     TResult? Function(RecommendedFailure failure)? failure,
     TResult? Function(RecommendedActions actions)? loaded,
   }) {
@@ -429,7 +297,6 @@ class _$FailureImpl extends _Failure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
     TResult Function(RecommendedFailure failure)? failure,
     TResult Function(RecommendedActions actions)? loaded,
     required TResult orElse(),
@@ -444,7 +311,6 @@ class _$FailureImpl extends _Failure {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
     required TResult Function(_Failure value) failure,
     required TResult Function(_Loaded value) loaded,
   }) {
@@ -455,7 +321,6 @@ class _$FailureImpl extends _Failure {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
     TResult? Function(_Failure value)? failure,
     TResult? Function(_Loaded value)? loaded,
   }) {
@@ -466,7 +331,6 @@ class _$FailureImpl extends _Failure {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
     TResult Function(_Failure value)? failure,
     TResult Function(_Loaded value)? loaded,
     required TResult orElse(),
@@ -572,7 +436,6 @@ class _$LoadedImpl extends _Loaded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loading,
     required TResult Function(RecommendedFailure failure) failure,
     required TResult Function(RecommendedActions actions) loaded,
   }) {
@@ -583,7 +446,6 @@ class _$LoadedImpl extends _Loaded {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? loading,
     TResult? Function(RecommendedFailure failure)? failure,
     TResult? Function(RecommendedActions actions)? loaded,
   }) {
@@ -594,7 +456,6 @@ class _$LoadedImpl extends _Loaded {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
     TResult Function(RecommendedFailure failure)? failure,
     TResult Function(RecommendedActions actions)? loaded,
     required TResult orElse(),
@@ -609,7 +470,6 @@ class _$LoadedImpl extends _Loaded {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
     required TResult Function(_Failure value) failure,
     required TResult Function(_Loaded value) loaded,
   }) {
@@ -620,7 +480,6 @@ class _$LoadedImpl extends _Loaded {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
     TResult? Function(_Failure value)? failure,
     TResult? Function(_Loaded value)? loaded,
   }) {
@@ -631,7 +490,6 @@ class _$LoadedImpl extends _Loaded {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
     TResult Function(_Failure value)? failure,
     TResult Function(_Loaded value)? loaded,
     required TResult orElse(),

@@ -46,6 +46,7 @@ dependencies:
   dio: ^5.7.0
   flutter_secure_storage: ^4.2.1
   dartz: ^0.10.1
+  fade_shimmer: ^2.3.0
 
 dev_dependencies:
   flutter_test:

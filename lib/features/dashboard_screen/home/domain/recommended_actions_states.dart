@@ -7,7 +7,6 @@ part 'recommended_actions_states.freezed.dart';
 class RecommendedActionsStates with _$RecommendedActionsStates {
   const RecommendedActionsStates._();
   const factory RecommendedActionsStates.initial() = _Initial;
-  const factory RecommendedActionsStates.loading() = _Loading;
   const factory RecommendedActionsStates.failure(RecommendedFailure failure) =
       _Failure;
   const factory RecommendedActionsStates.loaded(RecommendedActions actions) =

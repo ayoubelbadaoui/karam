@@ -1,10 +1,10 @@
+import 'package:fade_shimmer/fade_shimmer.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
 import 'package:karam/core/extensions/internalization.dart';
 import 'package:karam/core/shared/injection.dart';
 import 'package:karam/core/theme/colors.dart';
-import 'package:karam/features/dashboard_screen/home/presentation/widgets/urgent_cases_section_widget.dart';
 import 'package:size_setter/size_setter.dart';
 
 class ActionsCarousel extends ConsumerStatefulWidget {
@@ -26,36 +26,44 @@ class _ActionsCarouselState extends ConsumerState<ActionsCarousel> {
   @override
   Widget build(BuildContext context) {
     final recommendedActionState = ref.watch(recommendedActionNotifierProvider);
-    return recommendedActionState.when(
-        initial: () => const Center(
-              child: Text("Loading..."),
-            ),
-        loading: () => const Center(
-              child: Text("Loading..."),
-            ),
-        failure: (f) => Center(
-              child: Text("failed ${f.errorMessage}"),
-            ),
-        loaded: (actions) {
-          return Padding(
-            padding: EdgeInsets.symmetric(horizontal: 15.w),
-            child: ClipRRect(
-              borderRadius:
-                  BorderRadius.circular(20.0.w), // Adjust the radius as needed
-              child: FlutterCarousel(
-                options: FlutterCarouselOptions(
-                  height: 200.0.h,
-                  showIndicator: true,
-                  autoPlay: true,
-                  enableInfiniteScroll: true,
-                  slideIndicator: CircularWaveSlideIndicator(
-                      slideIndicatorOptions: SlideIndicatorOptions(
-                    indicatorRadius: 5.w,
-                  )),
-                  padEnds: false,
-                  viewportFraction: 1,
-                ),
-                items: actions.data.content.map((i) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 15.w),
+      child: ClipRRect(
+        borderRadius:
+            BorderRadius.circular(20.0.w), // Adjust the radius as needed
+        child: FlutterCarousel(
+          options: FlutterCarouselOptions(
+            height: 200.0.h,
+            showIndicator: true,
+            autoPlay: true,
+            enableInfiniteScroll: true,
+            slideIndicator: CircularWaveSlideIndicator(
+                slideIndicatorOptions: SlideIndicatorOptions(
+              indicatorRadius: 5.w,
+            )),
+            padEnds: false,
+            viewportFraction: 1,
+          ),
+          items: recommendedActionState.when(
+              initial: () => [
+                    FadeShimmer(
+                      height: 200.0.h,
+                      width: double.infinity,
+                      radius: 20,
+                      baseColor:
+                          const Color(0xFFCCCCCC), // Stronger gray for base
+                      highlightColor:
+                          const Color(0xFFFFFFFF), // Bright white for highlight
+                      fadeTheme: FadeTheme.light,
+                    )
+                  ],
+              failure: (f) => [
+                    const Center(
+                      child: Text("Failed to load"),
+                    )
+                  ],
+              loaded: (actions) {
+                return actions.data.content.map((i) {
                   return Builder(
                     builder: (BuildContext context) {
                       return Container(
@@ -64,6 +72,14 @@ class _ActionsCarouselState extends ConsumerState<ActionsCarousel> {
                           decoration: BoxDecoration(
                             color: AppColors.primary100,
                             borderRadius: BorderRadius.circular(20.0),
+                            image: i.actionBlob != null
+                                ? DecorationImage(
+                                    image: MemoryImage(
+                                        i.actionBlob), // Use the blob here
+                                    fit: BoxFit
+                                        .cover, // Adjust the fit as needed
+                                  )
+                                : null,
                           ),
                           child: Stack(
                             children: [
@@ -87,10 +103,10 @@ class _ActionsCarouselState extends ConsumerState<ActionsCarousel> {
                           ));
                     },
                   );
-                }).toList(),
-              ),
-            ),
-          );
-        });
+                }).toList();
+              }),
+        ),
+      ),
+    );
   }
 }
