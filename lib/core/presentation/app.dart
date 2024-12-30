@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -34,7 +36,8 @@ class _AppState extends ConsumerState<AppWidget> {
           ref.read(appRouterProvider).go(HomeScreen.path);
         },
         failure: (msg) {
-          ref.read(appRouterProvider).go(OnBoardingScreen.path);
+          log('failed state auth');
+          // ref.read(appRouterProvider).go(OnBoardingScreen.path);
         },
         unauthenticated: () {
           ref.read(appRouterProvider).go(OnBoardingScreen.path);

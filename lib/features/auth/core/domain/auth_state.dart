@@ -11,7 +11,7 @@ class AuthState with _$AuthState {
   const factory AuthState.authenticated(UserCredentials userCredentials) =
       _Authenticated;
   const factory AuthState.passwordRecoverSent() = _PasswordRecoverSent;
-  const factory AuthState.userCreated(UserCredentials user) = _UserCreated;
+  const factory AuthState.userCreated() = _UserCreated;
   const factory AuthState.failure(AuthFailure authFailure) = _Failure;
   const factory AuthState.unConfirmed() = _UnConfirmed;
 }

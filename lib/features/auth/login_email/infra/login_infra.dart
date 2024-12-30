@@ -8,10 +8,12 @@ import 'package:karam/core/constants/endpoints.dart';
 import 'package:karam/core/extensions/internalization.dart';
 import 'package:karam/core/infrastructure/api_client.dart';
 import 'package:karam/features/auth/core/domain/auth_failure.dart';
+import 'package:karam/features/auth/core/domain/user.dart';
+import 'package:karam/features/auth/core/domain/user_confirmation_sign_up.dart';
 import 'package:karam/features/auth/core/domain/user_credentials.dart';
 
 typedef UserOrFailure = Either<AuthFailure, UserCredentials>;
-// typedef EmailConfirmationOrFailure = Either<AuthFailure, UserConfirmationModel>;
+typedef EmailConfirmationOrFailure = Either<AuthFailure, UserConfirmationModel>;
 typedef SentAgainOrFailure = Either<AuthFailure, Unit>;
 
 class AuthInfra {
@@ -65,26 +67,31 @@ class AuthInfra {
     await _flutterSecureStorage.delete(key: 'credentials');
   }
 
-  // Future<UserOrFailure> signUp(UserToSend user) async {
-  //   final jsonReq = jsonEncode({
-  //     "firstName": user.firstName,
-  //     "lastName": user.lastName,
-  //     "email": user.email,
-  //     "password": user.password,
-  //   });
-  //   try {
-  //     final response =
-  //         await _apiClient.dioInstance.post(_apiEndPoints.users, data: jsonReq);
-  //     if (response.statusCode! > 201) {
-  //       return left(AuthFailure(response.statusMessage));
-  //     }
-  //     final userData = UserModel.fromJson(response.data);
-  //     return right(userData);
-  //   } on DioException catch (e) {
-  //     final msgErr = e.response ?? 'Server error';
-  //     return left(AuthFailure(msgErr.toString()));
-  //   }
-  // }
+  Future<EmailConfirmationOrFailure> signUp({required UserKaram user}) async {
+    final jsonReq = jsonEncode({
+      "firstName": user.firstName,
+      "lastName": user.name,
+      "email": user.email,
+      "password": user.password,
+      "username": user.username,
+    });
+    try {
+      final response = await _apiClient.dioInstance
+          .post(_apiEndPoints.createAccount, data: jsonReq);
+      if (response.statusCode! > 201) {
+        return left(AuthFailure(response.statusMessage));
+      }
+      final userCreation = UserConfirmationModel.fromJson(response.data);
+      if (userCreation.success) {
+        return right(userCreation);
+      } else {
+        return left(AuthFailure(userCreation.messages?.first));
+      }
+    } on dio_lib.DioException catch (e) {
+      final msgErr = e.response ?? 'Server error';
+      return left(AuthFailure(msgErr.toString()));
+    }
+  }
 
   Future<bool> _checkIfTokenIsValid(String token) async {
     try {

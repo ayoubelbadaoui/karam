@@ -7,7 +7,19 @@ part of 'user.dart';
 // **************************************************************************
 
 _$UserKaramImpl _$$UserKaramImplFromJson(Map<String, dynamic> json) =>
-    const _$UserKaramImpl();
+    _$UserKaramImpl(
+      email: json['email'] as String,
+      password: json['password'] as String,
+      name: json['nom'] as String,
+      firstName: json['prenom'] as String,
+      username: json['username'] as String,
+    );
 
 Map<String, dynamic> _$$UserKaramImplToJson(_$UserKaramImpl instance) =>
-    <String, dynamic>{};
+    <String, dynamic>{
+      'email': instance.email,
+      'password': instance.password,
+      'nom': instance.name,
+      'prenom': instance.firstName,
+      'username': instance.username,
+    };

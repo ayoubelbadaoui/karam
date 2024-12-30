@@ -8,6 +8,7 @@ import 'package:karam/core/constants/assets_svg.dart';
 import 'package:karam/core/constants/spacing.dart';
 import 'package:karam/core/extensions/internalization.dart';
 import 'package:karam/core/shared/UI/gaps.dart';
+import 'package:karam/core/shared/injection.dart';
 import 'package:karam/core/shared/widgets/app_input.dart';
 import 'package:karam/core/shared/widgets/body_warpper.dart';
 import 'package:karam/core/shared/widgets/gradient_button.dart';
@@ -27,6 +28,22 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final loginNotifier = ref.watch(loginStateNotifierProvider.notifier);
+
+    bool loadingState = ref.watch(loginStateNotifierProvider).maybeWhen(
+          orElse: () => false,
+          initial: () => true,
+        );
+
+    ref.listen(loginStateNotifierProvider, (previous, next) {
+      next.maybeWhen(
+          orElse: () {},
+          failure: (error) {
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: Text(error.message!),
+            ));
+          });
+    });
     return Scaffold(
       resizeToAvoidBottomInset: true,
       body: BodyWrapper(
@@ -57,6 +74,8 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                   AppInput(
                     title: context.translate().username,
                     hint: context.translate().username,
+                    controller: loginNotifier.username,
+                    isLoading: loadingState,
                     validator: (username) {
                       if (username == null ||
                           username.isEmpty ||
@@ -70,6 +89,8 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                   AppInput(
                     title: context.translate().email,
                     hint: context.translate().email,
+                    controller: loginNotifier.email,
+                    isLoading: loadingState,
                     validator: (email) {
                       if (email == null ||
                           email.isEmpty ||
@@ -83,6 +104,8 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                   AppInput(
                     title: context.translate().first_name,
                     hint: context.translate().first_name,
+                    controller: loginNotifier.firstName,
+                    isLoading: loadingState,
                     validator: (firstName) {
                       if (firstName == null ||
                           firstName.isEmpty ||
@@ -96,6 +119,8 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                   AppInput(
                     title: context.translate().name,
                     hint: context.translate().name,
+                    controller: loginNotifier.lastName,
+                    isLoading: loadingState,
                     validator: (name) {
                       if (name == null || name.isEmpty || !name.isSsidNames()) {
                         return context.translate().valid_username;
@@ -108,6 +133,8 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                     obscureText: true,
                     title: context.translate().password,
                     hint: context.translate().password,
+                    controller: loginNotifier.password,
+                    isLoading: loadingState,
                     autofillHints: const [
                       AutofillHints.username,
                       AutofillHints.email
@@ -123,23 +150,32 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                     },
                   ),
                   AppSpacing.bigGap,
-                  PrimaryGradientButton(
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('Processing Data')),
-                        );
-                      }
-                    },
-                    child: Center(
-                      child: Text(
-                        context.translate().sign_up.firstToUpperCase(),
-                        style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                              color: Theme.of(context).colorScheme.secondary,
+                  ref.watch(loginStateNotifierProvider).maybeWhen(
+                        orElse: () {
+                          return PrimaryGradientButton(
+                            onPressed: () {
+                              if (_formKey.currentState!.validate()) {
+                                loginNotifier.signup();
+                              }
+                            },
+                            child: Center(
+                              child: Text(
+                                context.translate().sign_up.firstToUpperCase(),
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .labelLarge
+                                    ?.copyWith(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .secondary,
+                                    ),
+                              ),
                             ),
+                          );
+                        },
+                        initial: () =>
+                            const Center(child: CircularProgressIndicator()),
                       ),
-                    ),
-                  ),
                   AppSpacing.bigGap,
                   Align(
                     child: Text(
