@@ -9,6 +9,7 @@ class ProfileScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final authNotifer = ref.watch(loginStateNotifierProvider.notifier);
     return Scaffold(
       body: Center(
         child: ElevatedButton(
@@ -18,7 +19,12 @@ class ProfileScreen extends ConsumerWidget {
                   // Navigate to Home screen
                   .updateBottomNavigation(0);
             },
-            child: const Text("Make donation")),
+            child: ElevatedButton.icon(
+              onPressed: () {
+                authNotifer.signOut();
+              },
+              label: const Text('Sign out'),
+            )),
       ),
     );
   }

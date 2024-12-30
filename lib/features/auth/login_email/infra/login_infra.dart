@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 import 'package:dartz/dartz.dart';
 
-import 'package:dio/dio.dart';
+import 'package:dio/dio.dart' as dio_lib;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:karam/core/constants/endpoints.dart';
 import 'package:karam/core/extensions/internalization.dart';
@@ -52,7 +52,7 @@ class AuthInfra {
       }
 
       return left(AuthFailure(response.statusMessage));
-    } on DioException catch (e) {
+    } on dio_lib.DioException catch (e) {
       log("log in error ${e.response}");
       final msgErr = e.response == null
           ? 'Server error'
@@ -86,48 +86,47 @@ class AuthInfra {
   //   }
   // }
 
-  // Future<bool> _checkIfTokenIsValid(String token) async {
-  //   try {
-  //     final itemsRes = await _apiClient.dioInstance.get(
-  //       "${_apiEndPoints.items}/user",
-  //       queryParameters: {
-  //         "page": 1,
-  //         "itemsPerPage": 10,
-  //         "toto": 1,
-  //       },
-  //     );
-  //     if (itemsRes.statusCode == 200) {
-  //       return true;
-  //     }
-  //     return false;
-  //   } catch (_) {
-  //     return false;
-  //   }
-  // }
+  Future<bool> _checkIfTokenIsValid(String token) async {
+    try {
+      final itemsRes = await _apiClient.dioInstance.get(
+        _apiEndPoints.listCategories,
+        options: dio_lib.Options(
+          extra: {"needToken": true},
+        ),
+      );
+
+      if (itemsRes.statusCode == 200) {
+        return true;
+      }
+      return false;
+    } catch (_) {
+      return false;
+    }
+  }
+
+  Future<Either<AuthFailure, UserCredentials>> isSignedIn() async {
+    final cachedUser = await _flutterSecureStorage.read(key: 'credentials');
+    if (cachedUser != null) {
+      final user = UserCredentials.fromJson(jsonDecode(cachedUser));
+      // check if the token is still valid
+      final tokenIsValid = await _checkIfTokenIsValid(user.data!.token);
+      if (tokenIsValid) {
+        log("Token is still valid");
+        return right(user);
+      }
+      log("Token is not valid");
+      signOut();
+      return left(const AuthFailure('Token expired'));
+    }
+    log("Token is not valid logged out");
+
+    return left(const AuthFailure('User is not logged in'));
+  }
 
   Future<UserCredentials?> getCurrentUser() async {
     final cachedUser = await _flutterSecureStorage.read(key: 'credentials');
     return UserCredentials.fromJson(jsonDecode(cachedUser!));
   }
-
-  // Future<Either<AuthFailure, UserCredentials>> isSignedIn() async {
-  // final cachedUser = await _flutterSecureStorage.read(key: 'credentials');
-  // if (cachedUser != null) {
-  //   final user = UserCredentials.fromJson(jsonDecode(cachedUser));
-  //   // check if the token is still valid
-  //   final tokenIsValid = await _checkIfTokenIsValid(user.token);
-  //   if (tokenIsValid) {
-  //     log("Token is till valid");
-  //     return right(user);
-  //   }
-  //   log("Token is not valid");
-  //   // signOut();
-  //   return left(const AuthFailure('Token expired'));
-  // }
-  // log("Token is not valid logged out");
-
-  // return left(const AuthFailure('User is not logged in'));
-  // }
 
   // Future<EmailConfirmationOrFailure> confirmEmail(
   //     String email, String code) async {

@@ -25,6 +25,10 @@ final appRouterProvider = Provider<GoRouter>((ref) {
   return appRouter;
 });
 
+final goRouterProvider = Provider<GoRouter>((ref) {
+  return ref.watch(appRouterProvider);
+});
+
 final bottomNavigationNotifierProvider =
     Provider<BottomNavigationNotifier>((ref) {
   return BottomNavigationNotifier(ref.watch(appRouterProvider));
@@ -58,5 +62,6 @@ final loginInfraProvider = Provider<AuthInfra>((ref) {
 
 final loginStateNotifierProvider =
     StateNotifierProvider<AuthNotifier, AuthState>((ref) {
-  return AuthNotifier(ref.watch(loginInfraProvider));
+  return AuthNotifier(ref.watch(loginInfraProvider),
+      ref.watch(bottomNavigationNotifierProvider));
 });

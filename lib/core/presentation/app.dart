@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:karam/core/shared/injection.dart';
 import 'package:karam/core/theme/theme.dart';
+import 'package:karam/features/dashboard_screen/home/presentation/home_screen.dart';
 import 'package:karam/features/intro_screen/presentation/on_boarding_screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:size_setter/size_setter.dart';
@@ -11,8 +12,8 @@ import 'package:size_setter/size_setter.dart';
 final _initializationProvider = FutureProvider<Unit>((ref) async {
   final apiClient = ref.read(apiClientProvider);
   await apiClient.init();
-  // final authNotifier = ref.read(authProvider.notifier);
-  // await authNotifier.checkAndUpdateState();
+  final authNotifier = ref.read(loginStateNotifierProvider.notifier);
+  await authNotifier.checkAndUpdateState();
   return unit;
 });
 
@@ -26,26 +27,20 @@ class AppWidget extends ConsumerStatefulWidget {
 class _AppState extends ConsumerState<AppWidget> {
   @override
   void initState() {
-    final appRouter = ref.read(appRouterProvider);
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      // ignore: use_build_context_synchronously
-      Future.delayed(const Duration(seconds: 0)).then((_) {
-        appRouter.go(OnBoardingScreen.path);
-      });
+    ref.listenManual(loginStateNotifierProvider, (p, n) {
+      n.maybeWhen(
+        orElse: () {},
+        authenticated: (d) {
+          ref.read(appRouterProvider).go(HomeScreen.path);
+        },
+        failure: (msg) {
+          ref.read(appRouterProvider).go(OnBoardingScreen.path);
+        },
+        unauthenticated: () {
+          ref.read(appRouterProvider).go(OnBoardingScreen.path);
+        },
+      );
     });
-
-    // ref
-    //     .read(firebaseAuthInstanceProvider)
-    //     .authStateChanges()
-    //     .listen((user) async {
-    //   if (user == null) {
-    //     await _appRouter.pushAndPopUntil(const OnboardingRoute(),
-    //         predicate: ((route) => false));
-    //   } else {
-    //     await _appRouter.pushAndPopUntil(const AuthVerificationRoute(),
-    //         predicate: ((route) => false));
-    //   }
-    // });
     super.initState();
   }
 
