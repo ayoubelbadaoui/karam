@@ -41,7 +41,7 @@ class _LoginScreenState extends ConsumerState<AuthScreen> {
                 const LogoWidget(),
                 AppSpacing.customGap(85),
                 Text(
-                  context.translate().login,
+                  context.tr().login,
                   style: Theme.of(context).textTheme.displayMedium?.copyWith(
                         color: Theme.of(context).secondaryHeaderColor,
                       ),
@@ -51,7 +51,7 @@ class _LoginScreenState extends ConsumerState<AuthScreen> {
                   icon: SvgPicture.asset(AppSvgAssets.facebook),
                   onPressed: () {},
                   label: Text(
-                    context.translate().facebook.firstToUpperCase(),
+                    context.tr().facebook.firstToUpperCase(),
                     style: Theme.of(context).textTheme.labelLarge?.copyWith(
                           color: Theme.of(context).colorScheme.onSurface,
                         ),
@@ -62,7 +62,7 @@ class _LoginScreenState extends ConsumerState<AuthScreen> {
                   icon: SvgPicture.asset(AppSvgAssets.google),
                   onPressed: () {},
                   label: Text(
-                    context.translate().google.firstToUpperCase(),
+                    context.tr().google.firstToUpperCase(),
                     style: Theme.of(context).textTheme.labelLarge?.copyWith(
                           color: Theme.of(context).colorScheme.onSurface,
                         ),
@@ -73,7 +73,7 @@ class _LoginScreenState extends ConsumerState<AuthScreen> {
                   icon: SvgPicture.asset(AppSvgAssets.apple),
                   onPressed: () {},
                   label: Text(
-                    context.translate().apple.firstToUpperCase(),
+                    context.tr().apple.firstToUpperCase(),
                     style: Theme.of(context).textTheme.labelLarge?.copyWith(
                           color: Theme.of(context).colorScheme.onSurface,
                         ),
@@ -81,7 +81,7 @@ class _LoginScreenState extends ConsumerState<AuthScreen> {
                 ),
                 AppSpacing.extraBigGap,
                 Text(
-                  context.translate().or,
+                  context.tr().or,
                   style: Theme.of(context)
                       .textTheme
                       .titleLarge
@@ -91,7 +91,7 @@ class _LoginScreenState extends ConsumerState<AuthScreen> {
                 PrimaryGradientButton(
                   onPressed: () => context.push(LoginScreen.path),
                   child: Text(
-                    context.translate().connect_with_email.firstToUpperCase(),
+                    context.tr().connect_with_email.firstToUpperCase(),
                     style: Theme.of(context).textTheme.labelLarge?.copyWith(
                         fontSize: 18.px,
                         color: Theme.of(context).colorScheme.secondary),
@@ -104,7 +104,7 @@ class _LoginScreenState extends ConsumerState<AuthScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        context.translate().or,
+                        context.tr().or,
                         style: Theme.of(context).textTheme.labelLarge?.copyWith(
                               color: Theme.of(context).hintColor,
                               fontWeight: FontWeight.w400,
@@ -112,10 +112,7 @@ class _LoginScreenState extends ConsumerState<AuthScreen> {
                       ),
                       AppSpacing.extraSmallGap,
                       Text(
-                        context
-                            .translate()
-                            .register_on_karam
-                            .firstToUpperCase(),
+                        context.tr().register_on_karam.firstToUpperCase(),
                         style: Theme.of(context).textTheme.labelLarge?.copyWith(
                               color: Theme.of(context).primaryColor,
                             ),

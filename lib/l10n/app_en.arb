@@ -23,7 +23,17 @@
   "please_enter_valid_first_name": "Please enter a valid first name",
   "weak_password_error": "Weak password. Add letters, numbers, and symbols.",
   "urgent_cases": "Urgent cases",
-  "see_all": "See all"
+  "see_all": "See all",
+  "no_user_found": "No user found with this username",
+  "wrong_password": "Wrong password",
+  "email_not_verified": "Email not verified",
+  "server_error": "Server error, try again later",
+  "verification_link_sent": "Verification link sent to your email"
+
+
+
+
+  
 
 
 }

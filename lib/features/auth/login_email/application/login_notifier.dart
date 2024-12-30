@@ -1,8 +1,5 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart' show TextEditingController;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:karam/features/auth/core/domain/auth_failure.dart';
 import 'package:karam/features/auth/core/domain/auth_state.dart';
 import 'package:karam/features/auth/core/domain/user.dart';
 import 'package:karam/features/auth/core/domain/user_credentials.dart';
@@ -10,12 +7,14 @@ import 'package:karam/features/auth/login_email/infra/login_infra.dart';
 import 'package:karam/features/dashboard_screen/core/application/bottom_navigation_notifer.dart';
 
 class AuthNotifier extends StateNotifier<AuthState> {
-  AuthNotifier(this._authInfra, this._bottomNavigationNotifier)
-      : super(const AuthState.unKnown());
+  AuthNotifier(
+    this._authInfra,
+    this._bottomNavigationNotifier,
+  ) : super(const AuthState.unKnown());
 
   final AuthInfra _authInfra;
-
   UserCredentials? currentUser;
+
   final BottomNavigationNotifier _bottomNavigationNotifier;
 
   TextEditingController email = TextEditingController();
@@ -29,7 +28,6 @@ class AuthNotifier extends StateNotifier<AuthState> {
     checkSignIn.fold(
       (l) {
         state = const AuthState.unauthenticated();
-        log("state nowsww $state");
       },
       (r) {
         currentUser = r;
@@ -53,9 +51,7 @@ class AuthNotifier extends StateNotifier<AuthState> {
       },
       (r) {
         _clearControllers();
-
-        state =
-            const AuthState.userCreated("Verfication link sent to your email");
+        state = AuthState.userCreated(r.messages!.first);
       },
     );
   }

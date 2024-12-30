@@ -12,9 +12,18 @@ import 'package:karam/features/auth/login_email/application/login_notifier.dart'
 import 'package:karam/features/auth/login_email/infra/login_infra.dart';
 import 'package:karam/features/dashboard_screen/core/application/bottom_navigation_notifer.dart';
 import 'package:karam/features/dashboard_screen/home/application/urgent_cases_notifier.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart'; // Generated localization file
 
 final currentLangProvider = Provider<Locale>((ref) {
   return PlatformDispatcher.instance.locales.first;
+});
+
+final localeProvider =
+    StateProvider<Locale>((ref) => ref.watch(currentLangProvider));
+
+final appLocalizationsProvider = Provider<AppLocalizations>((ref) {
+  final locale = ref.watch(localeProvider);
+  return lookupAppLocalizations(locale);
 });
 
 final apiEndPointsProvider = Provider<ApiEndPoints>((ref) {
@@ -56,12 +65,17 @@ final flutterSecureStorageProvider = Provider<FlutterSecureStorage>((ref) {
 });
 
 final loginInfraProvider = Provider<AuthInfra>((ref) {
-  return AuthInfra(ref.watch(apiClientProvider), ref.read(apiEndPointsProvider),
-      ref.watch(flutterSecureStorageProvider));
+  return AuthInfra(
+      ref.watch(apiClientProvider),
+      ref.read(apiEndPointsProvider),
+      ref.watch(flutterSecureStorageProvider),
+      ref.watch(appLocalizationsProvider));
 });
 
 final loginStateNotifierProvider =
     StateNotifierProvider<AuthNotifier, AuthState>((ref) {
-  return AuthNotifier(ref.watch(loginInfraProvider),
-      ref.watch(bottomNavigationNotifierProvider));
+  return AuthNotifier(
+    ref.watch(loginInfraProvider),
+    ref.watch(bottomNavigationNotifierProvider),
+  );
 });

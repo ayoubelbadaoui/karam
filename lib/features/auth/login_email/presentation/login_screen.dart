@@ -44,7 +44,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
             ));
           });
     });
-
+    final localizations = ref.read(appLocalizationsProvider);
     return Scaffold(
       resizeToAvoidBottomInset: true,
       body: BodyWrapper(
@@ -62,7 +62,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   AppSpacing.bigGap,
                   Align(
                     child: Text(
-                      context.translate().login,
+                      localizations.login,
                       style: Theme.of(context)
                           .textTheme
                           .displayMedium
@@ -73,15 +73,15 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   ),
                   AppSpacing.bigGap,
                   AppInput(
-                    title: context.translate().username,
-                    hint: context.translate().username,
+                    title: localizations.username,
+                    hint: localizations.username,
                     isLoading: loadingState,
                     controller: loginStateNotifier.username,
                     validator: (username) {
                       if (username == null ||
                           username.isEmpty ||
                           !username.isUsername()) {
-                        return context.translate().valid_username;
+                        return localizations.valid_username;
                       }
                       return null;
                     },
@@ -90,8 +90,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   AppInput(
                     isLoading: loadingState,
                     obscureText: true,
-                    title: context.translate().password,
-                    hint: context.translate().password,
+                    title: localizations.password,
+                    hint: localizations.password,
                     controller: loginStateNotifier.password,
                     toggleObscureText: true,
                     autofillHints: const [
@@ -100,7 +100,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     ],
                     validator: (pwd) {
                       if (pwd == null || pwd.isEmpty) {
-                        return context.translate().enter_password;
+                        return localizations.enter_password;
                       }
                       return null;
                     },
@@ -116,7 +116,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                             },
                             child: Center(
                               child: Text(
-                                context.translate().login.firstToUpperCase(),
+                                localizations.login.firstToUpperCase(),
                                 style: Theme.of(context)
                                     .textTheme
                                     .labelLarge
@@ -135,7 +135,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   AppSpacing.bigGap,
                   Align(
                     child: Text(
-                      context.translate().or_continue_with,
+                      localizations.or_continue_with,
                       style: Theme.of(context).textTheme.labelLarge,
                     ),
                   ),
@@ -168,7 +168,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          context.translate().or,
+                          localizations.or,
                           style:
                               Theme.of(context).textTheme.labelLarge?.copyWith(
                                     color: Theme.of(context).hintColor,
@@ -177,10 +177,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                         ),
                         AppSpacing.extraSmallGap,
                         Text(
-                          context
-                              .translate()
-                              .register_on_karam
-                              .firstToUpperCase(),
+                          localizations.register_on_karam.firstToUpperCase(),
                           style:
                               Theme.of(context).textTheme.labelLarge?.copyWith(
                                     color: Theme.of(context).primaryColor,

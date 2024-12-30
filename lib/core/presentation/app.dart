@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -54,7 +52,8 @@ class _AppState extends ConsumerState<AppWidget> {
   @override
   Widget build(BuildContext context) {
     final appRouter = ref.watch(appRouterProvider);
-    final currentLang = ref.watch(currentLangProvider);
+    final locale = ref.watch(localeProvider);
+
     ref.listen(_initializationProvider, (previous, next) {});
 
     SystemChrome.setSystemUIOverlayStyle(
@@ -65,7 +64,7 @@ class _AppState extends ConsumerState<AppWidget> {
       child: MaterialApp.router(
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
-        locale: currentLang,
+        locale: locale,
         title: 'Introduction screen',
         debugShowCheckedModeBanner: false,
         routerConfig: appRouter,

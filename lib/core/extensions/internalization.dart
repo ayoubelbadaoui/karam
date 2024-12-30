@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 extension InternalizationString on BuildContext {
-  AppLocalizations translate() {
+  AppLocalizations tr() {
     return AppLocalizations.of(this)!;
   }
 }

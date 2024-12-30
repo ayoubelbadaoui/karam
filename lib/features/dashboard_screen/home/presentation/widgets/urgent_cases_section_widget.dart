@@ -19,13 +19,13 @@ class UrgentCasesSectionWidget extends ConsumerWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                context.translate().urgent_cases,
+                context.tr().urgent_cases,
                 style: Theme.of(context).textTheme.displayMedium?.copyWith(
                       fontSize: 20.sp,
                     ),
               ),
               Text(
-                context.translate().see_all,
+                context.tr().see_all,
                 style: Theme.of(context).textTheme.displaySmall?.copyWith(
                       fontWeight: FontWeight.w500,
                       color: Theme.of(context).cardColor,

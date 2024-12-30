@@ -49,14 +49,14 @@ class _OnBoardingScreenState extends ConsumerState<OnBoardingScreen> {
                 ),
                 onPressed: () => appRouter.push(AuthScreen.path),
                 child: Text(
-                  context.translate().skip.firstToUpperCase(),
+                  context.tr().skip.firstToUpperCase(),
                 ),
               ),
               PrimaryGradientButton(
                 onPressed: () => appRouter.push(AuthScreen.path),
                 child: Center(
                   child: Text(
-                    context.translate().next.firstToUpperCase(),
+                    context.tr().next.firstToUpperCase(),
                     style: Theme.of(context).textTheme.labelLarge?.copyWith(
                           color: Theme.of(context).colorScheme.secondary,
                         ),

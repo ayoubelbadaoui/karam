@@ -23,7 +23,17 @@
   "please_enter_valid_first_name": "Veuillez entrer un prénom valide",
   "weak_password_error": "Mot de passe faible. Ajoutez lettres, chiffres et symboles.",
   "urgent_cases": "Cas urgents",
-  "see_all": "Voir tout"
+  "see_all": "Voir tout",
+  "no_user_found": "Aucun utilisateur trouvé avec ce nom d'utilisateur",
+  "wrong_password": "Mot de passe incorrect",
+  "email_not_verified": "Email non vérifié",
+  "server_error": "Erreur du serveur, veuillez réessayer plus tard",
+  "verification_link_sent": "Lien de vérification envoyé à votre email"
+
+
+
+
+
 
 
 

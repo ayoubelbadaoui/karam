@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:bounce_tapper/bounce_tapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_regex/flutter_regex.dart';
@@ -31,6 +29,7 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
   @override
   Widget build(BuildContext context) {
     final loginNotifier = ref.watch(loginStateNotifierProvider.notifier);
+    final localizations = ref.read(appLocalizationsProvider);
 
     bool loadingState = ref.watch(loginStateNotifierProvider).maybeWhen(
           orElse: () => false,
@@ -70,7 +69,7 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                   AppSpacing.mediumGap,
                   Align(
                     child: Text(
-                      context.translate().sign_up,
+                      localizations.sign_up,
                       style: Theme.of(context)
                           .textTheme
                           .displayMedium
@@ -81,58 +80,58 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                   ),
                   AppSpacing.bigGap,
                   AppInput(
-                    title: context.translate().username,
-                    hint: context.translate().username,
+                    title: localizations.username,
+                    hint: localizations.username,
                     controller: loginNotifier.username,
                     isLoading: loadingState,
                     validator: (username) {
                       if (username == null ||
                           username.isEmpty ||
                           !username.isUsername()) {
-                        return context.translate().valid_username;
+                        return localizations.valid_username;
                       }
                       return null;
                     },
                   ),
                   AppSpacing.mediumGap,
                   AppInput(
-                    title: context.translate().email,
-                    hint: context.translate().email,
+                    title: localizations.email,
+                    hint: localizations.email,
                     controller: loginNotifier.email,
                     isLoading: loadingState,
                     validator: (email) {
                       if (email == null ||
                           email.isEmpty ||
                           !email.isEmail(supportTopLevelDomain: true)) {
-                        return context.translate().please_enter_valid_email;
+                        return localizations.please_enter_valid_email;
                       }
                       return null;
                     },
                   ),
                   AppSpacing.mediumGap,
                   AppInput(
-                    title: context.translate().first_name,
-                    hint: context.translate().first_name,
+                    title: localizations.first_name,
+                    hint: localizations.first_name,
                     controller: loginNotifier.firstName,
                     isLoading: loadingState,
                     validator: (firstName) {
                       if (firstName == null ||
                           firstName.isEmpty ||
                           !firstName.isSsidNames()) {
-                        return context.translate().valid_username;
+                        return localizations.valid_username;
                       }
                       return null;
                     },
                   ),
                   AppSpacing.mediumGap,
                   AppInput(
-                    title: context.translate().name,
-                    hint: context.translate().name,
+                    title: localizations.name,
+                    hint: localizations.name,
                     controller: loginNotifier.lastName,
                     isLoading: loadingState,
                     validator: (name) {
                       if (name == null || name.isEmpty || !name.isSsidNames()) {
-                        return context.translate().valid_username;
+                        return localizations.valid_username;
                       }
                       return null;
                     },
@@ -140,8 +139,8 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                   AppSpacing.mediumGap,
                   AppInput(
                     obscureText: true,
-                    title: context.translate().password,
-                    hint: context.translate().password,
+                    title: localizations.password,
+                    hint: localizations.password,
                     controller: loginNotifier.password,
                     isLoading: loadingState,
                     autofillHints: const [
@@ -151,9 +150,9 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                     toggleObscureText: true,
                     validator: (pwd) {
                       if (pwd == null || pwd.isEmpty) {
-                        return context.translate().enter_password;
+                        return localizations.enter_password;
                       } else if (!pwd.isPasswordEasy()) {
-                        return context.translate().weak_password_error;
+                        return localizations.weak_password_error;
                       }
                       return null;
                     },
@@ -169,7 +168,7 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                             },
                             child: Center(
                               child: Text(
-                                context.translate().sign_up.firstToUpperCase(),
+                                localizations.sign_up.firstToUpperCase(),
                                 style: Theme.of(context)
                                     .textTheme
                                     .labelLarge
@@ -188,7 +187,7 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                   AppSpacing.bigGap,
                   Align(
                     child: Text(
-                      context.translate().or_continue_with,
+                      localizations.or_continue_with,
                       style: Theme.of(context).textTheme.labelLarge,
                     ),
                   ),
@@ -223,7 +222,7 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          context.translate().or,
+                          localizations.or,
                           style:
                               Theme.of(context).textTheme.labelLarge?.copyWith(
                                     color: Theme.of(context).hintColor,
@@ -232,10 +231,7 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                         ),
                         AppSpacing.extraSmallGap,
                         Text(
-                          context
-                              .translate()
-                              .register_on_karam
-                              .firstToUpperCase(),
+                          localizations.register_on_karam.firstToUpperCase(),
                           style:
                               Theme.of(context).textTheme.labelLarge?.copyWith(
                                     color: Theme.of(context).primaryColor,

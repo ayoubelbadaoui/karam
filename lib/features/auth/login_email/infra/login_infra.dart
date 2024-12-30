@@ -4,6 +4,7 @@ import 'package:dartz/dartz.dart';
 
 import 'package:dio/dio.dart' as dio_lib;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:karam/core/config/utils/app_localizations.dart';
 import 'package:karam/core/constants/endpoints.dart';
 import 'package:karam/core/extensions/internalization.dart';
 import 'package:karam/core/infrastructure/api_client.dart';
@@ -17,10 +18,12 @@ typedef EmailConfirmationOrFailure = Either<AuthFailure, UserConfirmationModel>;
 typedef SentAgainOrFailure = Either<AuthFailure, Unit>;
 
 class AuthInfra {
-  AuthInfra(this._apiClient, this._apiEndPoints, this._flutterSecureStorage);
+  AuthInfra(this._apiClient, this._apiEndPoints, this._flutterSecureStorage,
+      this._localizations);
   final ApiCLient _apiClient;
   final ApiEndPoints _apiEndPoints;
   final FlutterSecureStorage _flutterSecureStorage;
+  final AppLocalizations _localizations;
 
   Future<Either<AuthFailure, UserCredentials>> login(
       String email, String password) async {
@@ -39,11 +42,11 @@ class AuthInfra {
           late String errorToShow;
           switch (errorMessages.first) {
             case "UtilisateurNotFound":
-              errorToShow = "No user found with this username";
+              errorToShow = _localizations.no_user_found;
             case "AuthBadCredentials":
-              errorToShow = "Wrong password";
+              errorToShow = _localizations.wrong_password;
             case "UTILISATEUR_BLOQUER":
-              errorToShow = "Email not verified";
+              errorToShow = _localizations.email_not_verified;
           }
           return left(AuthFailure(errorToShow.firstToUpperCase()));
         }
@@ -57,7 +60,7 @@ class AuthInfra {
     } on dio_lib.DioException catch (e) {
       log("log in error ${e.response}");
       final msgErr = e.response == null
-          ? 'Server error'
+          ? _localizations.server_error
           : e.response?.data['error'].toString();
       return left(AuthFailure(msgErr));
     }
@@ -83,12 +86,13 @@ class AuthInfra {
       }
       final userCreation = UserConfirmationModel.fromJson(response.data);
       if (userCreation.success) {
-        return right(userCreation);
+        return right(userCreation
+            .copyWith(messages: [_localizations.verification_link_sent]));
       } else {
         return left(AuthFailure(userCreation.messages?.first));
       }
     } on dio_lib.DioException catch (e) {
-      final msgErr = e.response ?? 'Server error';
+      final msgErr = e.response ?? _localizations.server_error;
       return left(AuthFailure(msgErr.toString()));
     }
   }
