@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
 import 'package:karam/core/extensions/internalization.dart';
 import 'package:karam/core/shared/injection.dart';
+import 'package:karam/core/shared/widgets/karam_error_widget.dart';
 import 'package:karam/core/theme/colors.dart';
 import 'package:size_setter/size_setter.dart';
 
@@ -36,7 +37,7 @@ class _ActionsCarouselState extends ConsumerState<ActionsCarousel> {
             height: 200.0.h,
             showIndicator: true,
             autoPlay: true,
-            enableInfiniteScroll: true,
+            enableInfiniteScroll: false,
             slideIndicator: CircularWaveSlideIndicator(
                 slideIndicatorOptions: SlideIndicatorOptions(
               indicatorRadius: 5.w,
@@ -58,9 +59,7 @@ class _ActionsCarouselState extends ConsumerState<ActionsCarousel> {
                     )
                   ],
               failure: (f) => [
-                    const Center(
-                      child: Text("Failed to load"),
-                    )
+                    const KaramErrorWidget(),
                   ],
               loaded: (actions) {
                 return actions.data.content.map((i) {

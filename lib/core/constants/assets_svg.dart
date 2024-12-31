@@ -5,6 +5,7 @@ class AppSvgAssets {
   static String get facebook => "$_base/facebook.svg";
   static String get google => "$_base/google.svg";
   static String get apple => "$_base/apple.svg";
+  static String get error_global => "$_base/error_global.svg";
   static String get logo_rounded => "$_base/logo_rounded.svg";
   static String get search_icon_light => "$_base/search_icon_light.svg";
   static String get notification_rounded_light =>

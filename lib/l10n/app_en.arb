@@ -28,7 +28,9 @@
   "wrong_password": "Wrong password",
   "email_not_verified": "Email not verified",
   "server_error": "Server error, try again later",
-  "verification_link_sent": "Verification link sent to your email"
+  "verification_link_sent": "Verification link sent to your email",
+  "failed_to_load_the_actions": "Failed to load the actions"
+
 
 
 

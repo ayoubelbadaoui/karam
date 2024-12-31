@@ -29,7 +29,9 @@
   "wrong_password": "كلمة المرور غير صحيحة",
   "email_not_verified": "البريد الإلكتروني غير مُحقق",
   "server_error": "خطأ في الخادم، يرجى المحاولة لاحقًا",
-  "verification_link_sent": "تم إرسال رابط التحقق إلى بريدك الإلكتروني"
+  "verification_link_sent": "تم إرسال رابط التحقق إلى بريدك الإلكتروني",
+  "failed_to_load_the_actions": "فشل في تحميل الإجراءات"
+
 
 
 
